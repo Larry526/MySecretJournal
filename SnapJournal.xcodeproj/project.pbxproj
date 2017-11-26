@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0510D8231FCB668700579242 /* DateHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0510D8221FCB668700579242 /* DateHandler.m */; };
 		0546EC001FCA801F00038878 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0546EBFF1FCA801F00038878 /* AppDelegate.m */; };
 		0546EC031FCA801F00038878 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0546EC021FCA801F00038878 /* MainViewController.m */; };
 		0546EC061FCA801F00038878 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0546EC041FCA801F00038878 /* Main.storyboard */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0510D8211FCB668700579242 /* DateHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateHandler.h; sourceTree = "<group>"; };
+		0510D8221FCB668700579242 /* DateHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateHandler.m; sourceTree = "<group>"; };
 		0546EBFB1FCA801F00038878 /* SnapJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0546EBFE1FCA801F00038878 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0546EBFF1FCA801F00038878 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -77,10 +80,10 @@
 		0546EBFD1FCA801F00038878 /* SnapJournal */ = {
 			isa = PBXGroup;
 			children = (
-				0510D8201FCB5F5200579242 /* Supporting Files */,
 				0564E8CD1FCB416A003C2F60 /* Controller */,
 				0564E8CC1FCB4165003C2F60 /* View */,
 				0564E8CB1FCB415F003C2F60 /* Model */,
+				0510D8201FCB5F5200579242 /* Supporting Files */,
 				0546EC0F1FCA801F00038878 /* Info.plist */,
 			);
 			path = SnapJournal;
@@ -90,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				0546EC071FCA801F00038878 /* SnapJournal.xcdatamodeld */,
+				0510D8211FCB668700579242 /* DateHandler.h */,
+				0510D8221FCB668700579242 /* DateHandler.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0564E8C41FCB3237003C2F60 /* DetailViewController.m in Sources */,
+				0510D8231FCB668700579242 /* DateHandler.m in Sources */,
 				0546EC091FCA801F00038878 /* SnapJournal.xcdatamodeld in Sources */,
 				0564E8CA1FCB3EBC003C2F60 /* CustomTableViewCell.m in Sources */,
 				0546EC031FCA801F00038878 /* MainViewController.m in Sources */,
