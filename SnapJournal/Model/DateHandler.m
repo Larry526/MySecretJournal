@@ -10,13 +10,9 @@
 
 @implementation DateHandler
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        
-    }
-    return self;
+-(void)returnCurrentDate {
+    
 }
+
 
 @end

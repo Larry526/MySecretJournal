@@ -12,4 +12,6 @@
 
 @property (nonnull, strong) NSDate *currentDate;
 
+-(void) returnCurrentDate;
+
 @end
