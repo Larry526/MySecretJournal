@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "CustomTableViewCell.h"
+#import "DateHandler.h"
 
 @interface MainViewController () <UITableViewDataSource>
 
@@ -19,8 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor whiteColor];
+    DateHandler *dateHandler = [[DateHandler alloc]init];
+    [dateHandler returnCurrentDate];
 
 
 }
