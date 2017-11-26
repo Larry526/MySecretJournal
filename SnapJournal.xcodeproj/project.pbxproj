@@ -8,26 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		0546EC001FCA801F00038878 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0546EBFF1FCA801F00038878 /* AppDelegate.m */; };
-		0546EC031FCA801F00038878 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0546EC021FCA801F00038878 /* ViewController.m */; };
+		0546EC031FCA801F00038878 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0546EC021FCA801F00038878 /* MainViewController.m */; };
 		0546EC061FCA801F00038878 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0546EC041FCA801F00038878 /* Main.storyboard */; };
 		0546EC091FCA801F00038878 /* SnapJournal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0546EC071FCA801F00038878 /* SnapJournal.xcdatamodeld */; };
 		0546EC0B1FCA801F00038878 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0546EC0A1FCA801F00038878 /* Assets.xcassets */; };
 		0546EC0E1FCA801F00038878 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0546EC0C1FCA801F00038878 /* LaunchScreen.storyboard */; };
 		0546EC111FCA801F00038878 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0546EC101FCA801F00038878 /* main.m */; };
+		0564E8C41FCB3237003C2F60 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564E8C31FCB3237003C2F60 /* DetailViewController.m */; };
+		0564E8CA1FCB3EBC003C2F60 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564E8C91FCB3EBC003C2F60 /* CustomTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0546EBFB1FCA801F00038878 /* SnapJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0546EBFE1FCA801F00038878 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0546EBFF1FCA801F00038878 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0546EC011FCA801F00038878 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0546EC021FCA801F00038878 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0546EC011FCA801F00038878 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		0546EC021FCA801F00038878 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		0546EC051FCA801F00038878 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0546EC081FCA801F00038878 /* SnapJournal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SnapJournal.xcdatamodel; sourceTree = "<group>"; };
 		0546EC0A1FCA801F00038878 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0546EC0D1FCA801F00038878 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0546EC0F1FCA801F00038878 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0546EC101FCA801F00038878 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0564E8C21FCB3237003C2F60 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		0564E8C31FCB3237003C2F60 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		0564E8C81FCB3EBC003C2F60 /* CustomTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
+		0564E8C91FCB3EBC003C2F60 /* CustomTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +47,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0510D8201FCB5F5200579242 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0546EC101FCA801F00038878 /* main.m */,
+				0546EBFE1FCA801F00038878 /* AppDelegate.h */,
+				0546EBFF1FCA801F00038878 /* AppDelegate.m */,
+				0546EC0A1FCA801F00038878 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		0546EBF21FCA801F00038878 = {
 			isa = PBXGroup;
 			children = (
@@ -60,18 +77,43 @@
 		0546EBFD1FCA801F00038878 /* SnapJournal */ = {
 			isa = PBXGroup;
 			children = (
-				0546EBFE1FCA801F00038878 /* AppDelegate.h */,
-				0546EBFF1FCA801F00038878 /* AppDelegate.m */,
-				0546EC011FCA801F00038878 /* ViewController.h */,
-				0546EC021FCA801F00038878 /* ViewController.m */,
-				0546EC041FCA801F00038878 /* Main.storyboard */,
-				0546EC0A1FCA801F00038878 /* Assets.xcassets */,
-				0546EC0C1FCA801F00038878 /* LaunchScreen.storyboard */,
+				0510D8201FCB5F5200579242 /* Supporting Files */,
+				0564E8CD1FCB416A003C2F60 /* Controller */,
+				0564E8CC1FCB4165003C2F60 /* View */,
+				0564E8CB1FCB415F003C2F60 /* Model */,
 				0546EC0F1FCA801F00038878 /* Info.plist */,
-				0546EC101FCA801F00038878 /* main.m */,
-				0546EC071FCA801F00038878 /* SnapJournal.xcdatamodeld */,
 			);
 			path = SnapJournal;
+			sourceTree = "<group>";
+		};
+		0564E8CB1FCB415F003C2F60 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0546EC071FCA801F00038878 /* SnapJournal.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0564E8CC1FCB4165003C2F60 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0546EC0C1FCA801F00038878 /* LaunchScreen.storyboard */,
+				0546EC041FCA801F00038878 /* Main.storyboard */,
+				0564E8C81FCB3EBC003C2F60 /* CustomTableViewCell.h */,
+				0564E8C91FCB3EBC003C2F60 /* CustomTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0564E8CD1FCB416A003C2F60 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0564E8C21FCB3237003C2F60 /* DetailViewController.h */,
+				0564E8C31FCB3237003C2F60 /* DetailViewController.m */,
+				0546EC011FCA801F00038878 /* MainViewController.h */,
+				0546EC021FCA801F00038878 /* MainViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,8 +187,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0564E8C41FCB3237003C2F60 /* DetailViewController.m in Sources */,
 				0546EC091FCA801F00038878 /* SnapJournal.xcdatamodeld in Sources */,
-				0546EC031FCA801F00038878 /* ViewController.m in Sources */,
+				0564E8CA1FCB3EBC003C2F60 /* CustomTableViewCell.m in Sources */,
+				0546EC031FCA801F00038878 /* MainViewController.m in Sources */,
 				0546EC111FCA801F00038878 /* main.m in Sources */,
 				0546EC001FCA801F00038878 /* AppDelegate.m in Sources */,
 			);
