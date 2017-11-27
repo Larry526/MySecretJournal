@@ -9,7 +9,7 @@
 #import "AddViewController.h"
 #import <Mapkit/Mapkit.h>
 
-@interface AddViewController () <CLLocationManagerDelegate>
+@interface AddViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self enableLocationServices];
 
     
 }
@@ -87,6 +88,51 @@
 - (void)disableLocationFeatures {
     [self.locationManager stopUpdatingLocation];
     self.mapView.showsUserLocation = NO;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    switch (status) {
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+            [self enableLocationFeatures];
+            break;
+        case kCLAuthorizationStatusRestricted:
+        case kCLAuthorizationStatusDenied:
+            [self disableLocationFeatures];
+            break;
+        case kCLAuthorizationStatusAuthorizedAlways:
+        case kCLAuthorizationStatusNotDetermined:
+            break;
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    NSLog(@"Got Location Updates!");
+    
+    for (CLLocation *location in locations) {
+        NSLog(@"Found Location: (%f, %f)", location.coordinate.latitude, location.coordinate.longitude);
+        MKMapCamera *camera = [MKMapCamera camera];
+        camera.centerCoordinate = location.coordinate;
+        camera.altitude = 1000;
+        self.mapView.camera = camera;
+    }
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if ([annotation isKindOfClass:MKUserLocation.class]) {
+        return nil;
+    }
+    
+    MKPinAnnotationView *view = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"pin"];
+    
+    if (!view) {
+        view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"pin"];
+        view.animatesDrop = YES;
+        view.canShowCallout = YES;
+    } else {
+        view.annotation = annotation;
+    }
+    
+    return view;
 }
 
 
