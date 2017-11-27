@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataHandler.h"
 
 @interface EditViewController : UIViewController
+
+@property (nonatomic) DataHandler *dataHandler;
 
 @end

@@ -39,4 +39,11 @@
     [self.delegate saveContext];
 }
 
+-(NSArray<Date *> *)fetchData {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Date"];
+    NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:@"timeStamp" ascending:NO];
+    request.sortDescriptors = @[dateSort];
+    return [self.context executeFetchRequest:request error:nil];
+    
+}
 @end

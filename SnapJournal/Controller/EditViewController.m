@@ -10,6 +10,10 @@
 
 @interface EditViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 @end
 
 @implementation EditViewController
@@ -19,6 +23,13 @@
     
 }
 
+- (IBAction)saveButtonPressed:(UIButton *)sender {
+    NSString *title = self.titleTextField.text;
+    NSString *content = self.contentTextView.text;
+    NSString *imgURL =@"test URL";
+    NSDictionary *data = @{@"title": title, @}
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 
@@ -26,6 +37,12 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)getWeatherButtonPressed:(UIButton *)sender {
+    
+}
+
+- (IBAction)getLocationButtonPressed:(UIButton *)sender {
+}
 
 
 
