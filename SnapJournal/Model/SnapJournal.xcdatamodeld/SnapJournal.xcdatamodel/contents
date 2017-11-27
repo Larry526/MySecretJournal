@@ -2,8 +2,19 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13771" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="Date" representedClassName="Date" syncable="YES" codeGenerationType="class">
         <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="journals" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Journal" inverseName="date" inverseEntity="Journal" syncable="YES"/>
+    </entity>
+    <entity name="Journal" representedClassName="Journal" syncable="YES" codeGenerationType="class">
+        <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lattitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weather" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="date" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Date" inverseName="journals" inverseEntity="Date" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Date" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="Date" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="Journal" positionX="198" positionY="18" width="128" height="148"/>
     </elements>
 </model>

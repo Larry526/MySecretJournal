@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0510D8231FCB668700579242 /* DateHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0510D8221FCB668700579242 /* DateHandler.m */; };
 		0510D8261FCB744600579242 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0510D8251FCB744600579242 /* EditViewController.m */; };
+		053AF97A1FCB8B4C0033B85F /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 053AF9791FCB8B4C0033B85F /* DataHandler.m */; };
 		0546EC001FCA801F00038878 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0546EBFF1FCA801F00038878 /* AppDelegate.m */; };
 		0546EC031FCA801F00038878 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0546EC021FCA801F00038878 /* MainViewController.m */; };
 		0546EC061FCA801F00038878 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0546EC041FCA801F00038878 /* Main.storyboard */; };
@@ -25,6 +26,8 @@
 		0510D8221FCB668700579242 /* DateHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateHandler.m; sourceTree = "<group>"; };
 		0510D8241FCB744600579242 /* EditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		0510D8251FCB744600579242 /* EditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		053AF9781FCB8B4C0033B85F /* DataHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataHandler.h; sourceTree = "<group>"; };
+		053AF9791FCB8B4C0033B85F /* DataHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataHandler.m; sourceTree = "<group>"; };
 		0546EBFB1FCA801F00038878 /* SnapJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0546EBFE1FCA801F00038878 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0546EBFF1FCA801F00038878 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				0546EC071FCA801F00038878 /* SnapJournal.xcdatamodeld */,
+				053AF9781FCB8B4C0033B85F /* DataHandler.h */,
+				053AF9791FCB8B4C0033B85F /* DataHandler.m */,
 				0510D8211FCB668700579242 /* DateHandler.h */,
 				0510D8221FCB668700579242 /* DateHandler.m */,
 			);
@@ -198,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0564E8C41FCB3237003C2F60 /* DetailViewController.m in Sources */,
+				053AF97A1FCB8B4C0033B85F /* DataHandler.m in Sources */,
 				0510D8231FCB668700579242 /* DateHandler.m in Sources */,
 				0546EC091FCA801F00038878 /* SnapJournal.xcdatamodeld in Sources */,
 				0564E8CA1FCB3EBC003C2F60 /* CustomTableViewCell.m in Sources */,
