@@ -6,6 +6,6 @@ target 'SnapJournal' do
   # use_frameworks!
 
   # Pods for SnapJournal
-  pod 'PDTSimpleCalendar'
+  pod 'FSCalendar'
 
 end
