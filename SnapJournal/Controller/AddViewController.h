@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "DataHandler.h"
 
-@interface EditViewController : UIViewController
+@interface AddViewController : UIViewController
 
 @property (nonatomic) DataHandler *dataHandler;
+
 
 @end

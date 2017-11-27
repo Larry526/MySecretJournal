@@ -58,7 +58,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Add"/>
                                         <connections>
-                                            <segue destination="XXT-yO-cEW" kind="presentation" id="9yF-SX-YnJ"/>
+                                            <segue destination="XXT-yO-cEW" kind="presentation" identifier="AddJournal" id="9yF-SX-YnJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -120,10 +120,10 @@
             </objects>
             <point key="canvasLocation" x="2114" y="249"/>
         </scene>
-        <!--Edit View Controller-->
+        <!--Add View Controller-->
         <scene sceneID="2TN-X2-XBQ">
             <objects>
-                <viewController id="XXT-yO-cEW" customClass="EditViewController" sceneMemberID="viewController">
+                <viewController id="XXT-yO-cEW" customClass="AddViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7tW-yb-uiL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,6 +237,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RXJ-b3-L2X"/>
+        <segue reference="9yF-SX-YnJ"/>
     </inferredMetricsTieBreakers>
 </document>

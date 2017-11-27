@@ -6,17 +6,18 @@
 //  Copyright © 2017 Larry Luk. All rights reserved.
 //
 
-#import "EditViewController.h"
+#import "AddViewController.h"
 
-@interface EditViewController ()
+@interface AddViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (nonatomic) NSManagedObjectContext *context;
 
 @end
 
-@implementation EditViewController
+@implementation AddViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,10 +26,11 @@
 
 - (IBAction)saveButtonPressed:(UIButton *)sender {
     NSString *title = self.titleTextField.text;
-    NSString *content = self.contentTextView.text;
-    NSString *imgURL =@"test URL";
-    NSDictionary *data = @{@"title": title};
+    NSString *detail = self.contentTextView.text   ;
+    NSString *image =@"test URL";
+    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image};
     
+    [self.dataHandler saveJournal:results];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

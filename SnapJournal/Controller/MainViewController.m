@@ -7,12 +7,17 @@
 //
 
 #import "MainViewController.h"
+#import "AddViewController.h"
 #import "CustomTableViewCell.h"
-#import "DateHandler.h"
+#import "DataHandler.h"
+#import "Date+CoreDataClass.h"
+#import "Journal+CoreDataClass.h"
 
 @interface MainViewController () <UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray <Date*>*dates;
+@property (strong, nonatomic) DataHandler *dataHandler;
 
 @end
 
@@ -21,15 +26,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    DateHandler *dateHandler = [[DateHandler alloc]init];
-    [dateHandler returnCurrentDate];
+    self.dataHandler = [[DataHandler alloc]init];
+    [self fetchData];
+}
 
+-(void)fetchData {
+    self.dates = [self.dataHandler fetchData];
+    [self.tableView reloadData];
+}
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"AddJournal"]) {
+        AddViewController *avc = segue.destinationViewController;
+        avc.dataHandler = self.dataHandler;
+    }
 }
 
 
+#pragma mark - Table View
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.dates.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
