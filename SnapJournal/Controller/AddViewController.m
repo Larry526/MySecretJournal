@@ -28,7 +28,9 @@
     NSString *title = self.titleTextField.text;
     NSString *detail = self.contentTextView.text   ;
     NSString *image =@"test URL";
-    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image};
+    NSDate *currentDate = [NSDate date];
+    NSLog(@"%@",currentDate);
+    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": currentDate};
     
     [self.dataHandler saveJournal:results];
     [self dismissViewControllerAnimated:YES completion:nil];

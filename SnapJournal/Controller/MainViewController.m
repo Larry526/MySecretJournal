@@ -12,6 +12,7 @@
 #import "DataHandler.h"
 #import "Date+CoreDataClass.h"
 #import "Journal+CoreDataClass.h"
+#import "DateHandler.h"
 
 @interface MainViewController () <UITableViewDataSource>
 
@@ -28,6 +29,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.dataHandler = [[DataHandler alloc]init];
     [self fetchData];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(fetchData) name:NSManagedObjectContextDidSaveNotification object:nil];
 }
 
 -(void)fetchData {
@@ -50,17 +52,22 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dates[section].journals.count;
     
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
-    cell.titleLabel.text = @"Hello World!";
+    Date *date = self.dates[indexPath.section];
+    Journal *journal = date.journals[indexPath.row];
+    cell.titleLabel.text = journal.title;
+    cell.detailLabel.text = journal.detail;
 
     return cell;
-    
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [NSString stringWithFormat:@"%@", self.dates[section].timeStamp];
 }
 
 

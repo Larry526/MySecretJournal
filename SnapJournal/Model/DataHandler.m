@@ -35,7 +35,7 @@
     journal.weather = dict[@"weather"];
     journal.longitude =  [dict[@"longitude"] doubleValue];
     journal.lattitude =  [dict[@"lattitude"] doubleValue];
-    journal.date = dict[@"date"];
+    journal.date.timeStamp = dict[@"date"];
     [self.delegate saveContext];
 }
 

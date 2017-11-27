@@ -10,9 +10,10 @@
 
 @implementation DateHandler
 
--(void)returnCurrentDate {
-    self.currentDate = [NSDate date];
-    NSLog(@"Current date is %@", self.currentDate);
+
++(void)returnCurrentDate {
+    NSDate *currentDate = [NSDate date];
+    NSLog(@"Current date is %@", currentDate);
     
 }
 
