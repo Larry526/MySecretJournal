@@ -10,4 +10,6 @@
 
 @interface DetailViewController : MainViewController
 
+@property (strong, nonatomic) NSDate *selectedDate;
+
 @end
