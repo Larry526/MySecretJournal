@@ -180,7 +180,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41K-FW-ha2">
-                                <rect key="frame" x="176" y="574" width="97" height="30"/>
+                                <rect key="frame" x="38" y="557" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Get location"/>
                                 <connections>
@@ -194,6 +194,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NVL-EE-nLc">
+                                <rect key="frame" x="156" y="506" width="238" height="176"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="efi-Bx-Y61"/>
@@ -201,6 +205,7 @@
                     <connections>
                         <outlet property="contentTextView" destination="CsE-eW-foq" id="yz1-X2-eSV"/>
                         <outlet property="imageView" destination="DxT-QW-cS1" id="7mb-r0-dTL"/>
+                        <outlet property="mapView" destination="NVL-EE-nLc" id="3lU-A6-cgl"/>
                         <outlet property="titleTextField" destination="pUP-ef-PhF" id="jLx-4c-Q6B"/>
                     </connections>
                 </viewController>

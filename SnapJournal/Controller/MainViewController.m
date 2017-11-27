@@ -12,7 +12,6 @@
 #import "DataHandler.h"
 #import "Date+CoreDataClass.h"
 #import "Journal+CoreDataClass.h"
-#import "DateHandler.h"
 
 @interface MainViewController () <UITableViewDataSource>
 
@@ -30,6 +29,7 @@
     self.dataHandler = [[DataHandler alloc]init];
     [self fetchData];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(fetchData) name:NSManagedObjectContextDidSaveNotification object:nil];
+    
 }
 
 -(void)fetchData {
@@ -66,9 +66,9 @@
     return cell;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [NSString stringWithFormat:@"%@", self.journals[section].timeStamp];
-}
+//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    return [NSString stringWithFormat:@"%@", self.journals[section].timeStamp];
+//}
 
 
 @end

@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Mapkit/Mapkit.h>
 
 @interface LocationHandler : NSObject
+
+- (void)enableLocationServices: (MKMapView*)mapView;
+
 
 @end

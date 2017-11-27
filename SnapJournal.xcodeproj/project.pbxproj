@@ -20,6 +20,7 @@
 		0564E8CA1FCB3EBC003C2F60 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564E8C91FCB3EBC003C2F60 /* CustomTableViewCell.m */; };
 		058E17511FCC9B6F000955CA /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 058E17501FCC9B6F000955CA /* CalendarViewController.m */; };
 		058E17541FCCC1F3000955CA /* LocationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 058E17531FCCC1F3000955CA /* LocationHandler.m */; };
+		058E17561FCCC6B5000955CA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 058E17551FCCC6B5000955CA /* MapKit.framework */; };
 		786E3F673D2B928EEAB58F69 /* libPods-SnapJournal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6510D46E4470011B850B590 /* libPods-SnapJournal.a */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		058E17501FCC9B6F000955CA /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		058E17521FCCC1F3000955CA /* LocationHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationHandler.h; sourceTree = "<group>"; };
 		058E17531FCCC1F3000955CA /* LocationHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationHandler.m; sourceTree = "<group>"; };
+		058E17551FCCC6B5000955CA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		29DA02780093329B41582705 /* Pods-SnapJournal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapJournal.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapJournal/Pods-SnapJournal.release.xcconfig"; sourceTree = "<group>"; };
 		B6510D46E4470011B850B590 /* libPods-SnapJournal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SnapJournal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8C709009144A2681443BB4 /* Pods-SnapJournal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapJournal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapJournal/Pods-SnapJournal.debug.xcconfig"; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				058E17561FCCC6B5000955CA /* MapKit.framework in Frameworks */,
 				786E3F673D2B928EEAB58F69 /* libPods-SnapJournal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +149,7 @@
 		3E50A325963F171EA2F88922 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				058E17551FCCC6B5000955CA /* MapKit.framework */,
 				B6510D46E4470011B850B590 /* libPods-SnapJournal.a */,
 			);
 			name = Frameworks;
@@ -195,6 +199,11 @@
 					0546EBFA1FCA801F00038878 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

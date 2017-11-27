@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "Date+CoreDataClass.h"
 #import "Journal+CoreDataClass.h"
-#import "DateHandler.h"
 
 @interface DataHandler : NSObject
 
