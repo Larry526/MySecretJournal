@@ -28,6 +28,7 @@
     NSString *content = self.contentTextView.text;
     NSString *imgURL =@"test URL";
     NSDictionary *data = @{@"title": title};
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
