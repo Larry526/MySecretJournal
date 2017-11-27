@@ -27,7 +27,7 @@
     NSString *title = self.titleTextField.text;
     NSString *content = self.contentTextView.text;
     NSString *imgURL =@"test URL";
-    NSDictionary *data = @{@"title": title, @}
+    NSDictionary *data = @{@"title": title};
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
