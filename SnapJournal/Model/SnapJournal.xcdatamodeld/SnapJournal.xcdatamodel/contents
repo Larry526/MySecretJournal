@@ -9,12 +9,13 @@
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lattitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weather" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="date" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Date" inverseName="journals" inverseEntity="Date" syncable="YES"/>
     </entity>
     <elements>
         <element name="Date" positionX="-63" positionY="-18" width="128" height="73"/>
-        <element name="Journal" positionX="198" positionY="18" width="128" height="148"/>
+        <element name="Journal" positionX="198" positionY="18" width="128" height="165"/>
     </elements>
 </model>

@@ -17,7 +17,7 @@
 @interface MainViewController () <UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray <Date*>*dates;
+@property (strong, nonatomic) NSArray <Journal*>*journals;
 @property (strong, nonatomic) DataHandler *dataHandler;
 
 @end
@@ -33,7 +33,7 @@
 }
 
 -(void)fetchData {
-    self.dates = [self.dataHandler fetchData];
+    self.journals = [self.dataHandler fetchData];
     [self.tableView reloadData];
 }
 
@@ -48,18 +48,18 @@
 #pragma mark - Table View
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dates.count;
+    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dates[section].journals.count;
+    return self.journals.count;
     
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    Date *date = self.dates[indexPath.section];
-    Journal *journal = date.journals[indexPath.row];
+//    Date *date = self.dates[indexPath.section];
+    Journal *journal = self.journals[indexPath.row];
     cell.titleLabel.text = journal.title;
     cell.detailLabel.text = journal.detail;
 
@@ -67,7 +67,7 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [NSString stringWithFormat:@"%@", self.dates[section].timeStamp];
+    return [NSString stringWithFormat:@"%@", self.journals[section].timeStamp];
 }
 
 

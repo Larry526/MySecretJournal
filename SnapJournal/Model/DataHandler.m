@@ -35,12 +35,12 @@
     journal.weather = dict[@"weather"];
     journal.longitude =  [dict[@"longitude"] doubleValue];
     journal.lattitude =  [dict[@"lattitude"] doubleValue];
-    journal.date.timeStamp = dict[@"date"];
+    journal.timeStamp = dict[@"date"];
     [self.delegate saveContext];
 }
 
 -(NSArray<Date *> *)fetchData {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Date"];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Journal"];
     NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:@"timeStamp" ascending:NO];
     request.sortDescriptors = @[dateSort];
     return [self.context executeFetchRequest:request error:nil];

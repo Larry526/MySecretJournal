@@ -15,7 +15,7 @@
 @interface DataHandler : NSObject
 
 -(void)saveJournal:(NSDictionary*) dict;
--(NSArray<Date *>*) fetchData;
+-(NSArray<Journal *>*) fetchData;
 
 
 @end
