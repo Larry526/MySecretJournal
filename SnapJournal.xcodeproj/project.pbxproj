@@ -16,6 +16,7 @@
 		0546EC0B1FCA801F00038878 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0546EC0A1FCA801F00038878 /* Assets.xcassets */; };
 		0546EC0E1FCA801F00038878 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0546EC0C1FCA801F00038878 /* LaunchScreen.storyboard */; };
 		0546EC111FCA801F00038878 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0546EC101FCA801F00038878 /* main.m */; };
+		0556400A1FCDC5880018FE4F /* Journal+MonthSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 055640091FCDC5880018FE4F /* Journal+MonthSection.m */; };
 		0564E8C41FCB3237003C2F60 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564E8C31FCB3237003C2F60 /* DetailViewController.m */; };
 		0564E8CA1FCB3EBC003C2F60 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564E8C91FCB3EBC003C2F60 /* CustomTableViewCell.m */; };
 		058E17561FCCC6B5000955CA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 058E17551FCCC6B5000955CA /* MapKit.framework */; };
@@ -38,6 +39,8 @@
 		0546EC0D1FCA801F00038878 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0546EC0F1FCA801F00038878 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0546EC101FCA801F00038878 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		055640081FCDC5880018FE4F /* Journal+MonthSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Journal+MonthSection.h"; sourceTree = "<group>"; };
+		055640091FCDC5880018FE4F /* Journal+MonthSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Journal+MonthSection.m"; sourceTree = "<group>"; };
 		0564E8C21FCB3237003C2F60 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		0564E8C31FCB3237003C2F60 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		0564E8C81FCB3EBC003C2F60 /* CustomTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 				0546EC071FCA801F00038878 /* SnapJournal.xcdatamodeld */,
 				053AF9781FCB8B4C0033B85F /* DataHandler.h */,
 				053AF9791FCB8B4C0033B85F /* DataHandler.m */,
+				055640081FCDC5880018FE4F /* Journal+MonthSection.h */,
+				055640091FCDC5880018FE4F /* Journal+MonthSection.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				0546EC091FCA801F00038878 /* SnapJournal.xcdatamodeld in Sources */,
 				0564E8CA1FCB3EBC003C2F60 /* CustomTableViewCell.m in Sources */,
 				0510D8261FCB744600579242 /* AddViewController.m in Sources */,
+				0556400A1FCDC5880018FE4F /* Journal+MonthSection.m in Sources */,
 				0546EC031FCA801F00038878 /* MainViewController.m in Sources */,
 				0546EC111FCA801F00038878 /* main.m in Sources */,
 				0546EC001FCA801F00038878 /* AppDelegate.m in Sources */,

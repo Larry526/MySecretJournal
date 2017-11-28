@@ -8,7 +8,7 @@
 
 #import "DataHandler.h"
 
-@interface DataHandler()
+@interface DataHandler() <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, weak) AppDelegate *delegate;
 @property (nonatomic) NSManagedObjectContext *context;
@@ -46,4 +46,30 @@
     return [self.context executeFetchRequest:request error:nil];
     
 }
+
+-(NSFetchedResultsController*) fetchedResultsController {
+
+    NSFetchRequest *fetchRequest = [Journal fetchRequest];
+
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"timeStamp" ascending:NO];
+
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
+//    aFetchedResultsController.delegate = self;
+//    self.fetchedResultsController = aFetchedResultsController;
+//
+//    NSError *error = nil;
+//    if (![self.fetchedResultsController performFetch:&error]) {
+//
+//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//        abort();
+//    }
+
+    return _fetchedResultsController;
+
+}
+
+
+
 @end
