@@ -19,8 +19,8 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
-@property (assign, nonatomic) NSNumber *storedLong;
-@property (assign, nonatomic) NSNumber *storedLat;
+@property (strong, nonatomic) NSNumber *storedLong;
+@property (strong, nonatomic) NSNumber *storedLat;
 
 
 
@@ -111,9 +111,11 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     
+    manager.desiredAccuracy = kCLLocationAccuracyBest;
+    
     for (CLLocation *location in locations) {
         NSLog(@"Found Location: (%f, %f)", location.coordinate.latitude, location.coordinate.longitude);
-        self.storedLat = [NSNumber numberWithDouble:location.coordinate.latitude];
+        self.storedLat = @(location.coordinate.latitude);
         self.storedLong = [NSNumber numberWithDouble:location.coordinate.longitude];
         MKMapCamera *camera = [MKMapCamera camera];
         camera.centerCoordinate = location.coordinate;
