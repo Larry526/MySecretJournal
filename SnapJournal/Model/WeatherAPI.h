@@ -10,4 +10,6 @@
 
 @interface WeatherAPI : NSObject
 
++ (void)searchLat:(NSString*)lat Lon:(NSString*)lon complete:(void (^)(NSDictionary *results))done;
+
 @end

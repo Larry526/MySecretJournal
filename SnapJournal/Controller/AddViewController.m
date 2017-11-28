@@ -8,6 +8,7 @@
 
 #import "AddViewController.h"
 #import <Mapkit/Mapkit.h>
+#import "WeatherAPI.h"
 
 @interface AddViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
