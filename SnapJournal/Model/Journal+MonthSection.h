@@ -10,11 +10,6 @@
 
 @interface Journal (MonthSection)
 
-//- (NSString*) month;
-
-@property (nullable, nonatomic, copy) NSDate *created;
-
-
-
+- (NSString *) month;
 
 @end

@@ -12,13 +12,13 @@
 
 @interface DataHandler : NSObject
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 
 -(void)saveJournal:(NSDictionary*) dict;
 
--(NSArray<Journal *>*) fetchData;
+//-(NSArray<Journal *>*) fetchData;
 
+-(NSFetchedResultsController*) fetchedResultsController;
 
 
 

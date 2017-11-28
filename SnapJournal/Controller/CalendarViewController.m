@@ -36,7 +36,7 @@
 //    DATA STUFF
     
     self.dataHandler = [[DataHandler alloc]init];
-    [self fetchData];
+//    [self fetchData];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(fetchData) name:NSManagedObjectContextDidSaveNotification object:nil];
     
 //    CALENDAR INITIALIZATION
@@ -62,11 +62,11 @@
 }
 
 
--(void)fetchData {
-    self.journals = [self.dataHandler fetchData];
-    [self.tableView reloadData];
-    NSLog(@"%f", self.journals.lastObject.lattitude);
-}
+//-(void)fetchData {
+//    self.journals = [self.dataHandler fetchData];
+//    [self.tableView reloadData];
+//    NSLog(@"%f", self.journals.lastObject.lattitude);
+//}
 
 - (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date
 {

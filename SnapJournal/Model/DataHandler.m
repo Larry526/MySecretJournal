@@ -8,7 +8,7 @@
 
 #import "DataHandler.h"
 
-@interface DataHandler() <NSFetchedResultsControllerDelegate>
+@interface DataHandler()
 
 @property (nonatomic, weak) AppDelegate *delegate;
 @property (nonatomic) NSManagedObjectContext *context;
@@ -39,13 +39,13 @@
     [self.delegate saveContext];
 }
 
--(NSArray<Date *> *)fetchData {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Journal"];
-    NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:@"timeStamp" ascending:NO];
-    request.sortDescriptors = @[dateSort];
-    return [self.context executeFetchRequest:request error:nil];
-    
-}
+//-(NSArray<Date *> *)fetchData {
+//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Journal"];
+//    NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:@"timeStamp" ascending:NO];
+//    request.sortDescriptors = @[dateSort];
+//    return [self.context executeFetchRequest:request error:nil];
+//    
+//}
 
 -(NSFetchedResultsController*) fetchedResultsController {
 
@@ -55,21 +55,13 @@
 
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
 
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
-//    aFetchedResultsController.delegate = self;
-//    self.fetchedResultsController = aFetchedResultsController;
-//
-//    NSError *error = nil;
-//    if (![self.fetchedResultsController performFetch:&error]) {
-//
-//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-//        abort();
-//    }
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc]
+                                                             initWithFetchRequest:fetchRequest
+                                                             managedObjectContext:self.context
+                                                             sectionNameKeyPath:@"month"
+                                                             cacheName:nil];
 
-    return _fetchedResultsController;
-
+    return aFetchedResultsController;
 }
-
-
 
 @end

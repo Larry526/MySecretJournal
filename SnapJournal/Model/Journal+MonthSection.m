@@ -10,14 +10,11 @@
 
 @implementation Journal (MonthSection)
 
-- (NSString*) month{
+- (NSString*) month {
     NSDateFormatter *fmtr = [[NSDateFormatter alloc] init];
     fmtr.timeStyle = NSDateFormatterNoStyle;
-    fmtr.dateStyle = NSDateFormatterShortStyle;
-    return [fmtr stringFromDate:self.created];
+    fmtr.dateFormat = @"MMMM-YYYY";
+    return [fmtr stringFromDate:self.timeStamp];
 }
-
-@dynamic created;
-
 
 @end
