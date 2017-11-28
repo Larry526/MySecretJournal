@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FSCalendar.h"
+#import "CalendarTableViewCell.h"
 
 @interface CalendarViewController : UIViewController
 

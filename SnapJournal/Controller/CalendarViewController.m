@@ -15,7 +15,7 @@
 @interface CalendarViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, FSCalendarDelegate, FSCalendarDataSource>
 
 @property (weak, nonatomic) IBOutlet UIView *tableViewContainer;
-@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray <Journal*>*journals;
 @property (strong, nonatomic) DataHandler *dataHandler;
 
@@ -30,13 +30,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    NSDate *today = [NSDate date];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
-//    CALENDAR INITIALIZATION
+//    DATA STUFF
     
     self.dataHandler = [[DataHandler alloc]init];
     [self fetchData];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(fetchData) name:NSManagedObjectContextDidSaveNotification object:nil];
+    
+//    CALENDAR INITIALIZATION
     
     FSCalendar *calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height/2)];
     calendar.dataSource = self;
@@ -56,16 +59,13 @@
     [calendar setScrollDirection:FSCalendarScrollDirectionVertical];
     calendar.backgroundColor = [UIColor whiteColor];
     
-//  TABLE BELOW CALENDAR
-    
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
-//    [self.view addSubview:self.tableView];
-    [self.view insertSubview:self.tableView aboveSubview:self.tableViewContainer];
 }
+
 
 -(void)fetchData {
     self.journals = [self.dataHandler fetchData];
     [self.tableView reloadData];
+    NSLog(@"%f", self.journals.lastObject.lattitude);
 }
 
 - (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date
@@ -83,31 +83,51 @@
     }];
 }
 
+- (nullable NSString *)calendar:(FSCalendar *)calendar subtitleForDate:(NSDate *)date{
+    return @"Test";
+}
+
 #pragma TABLEVIEW STUFF
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.journals.count;
+}
+
+-(CalendarTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *cellIdentifier = @"CalendarCell";
+    CalendarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    if (!cell)
+        cell = [[CalendarTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: cellIdentifier];
+    Journal *journal = self.journals[indexPath.row];
+    cell.calendarCellLabel.text = journal.title;
+    NSLog(@"Date: %@", journal.timeStamp);
+
+    return cell;
+}
+
+//-(void)readSelectedInstall:(NSString *)projIDString
 //{
-//    return 1;
-//}
 //
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return self.journals.count;
-//}
+//    NSArray *fetchedObjects;
+//    NSManagedObjectContext *context = [self managedObjectContext];
+//    NSFetchRequest *fetch = [[NSFetchRequest alloc] init];
+//    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"timeStamp"  inManagedObjectContext: context];
+//    [fetch setEntity:entityDescription];
+//    [fetch setPredicate:[NSPredicate predicateWithFormat:@"date = %@",projIDString]];
+//    NSError * error = nil;
+//    fetchedObjects = [context executeFetchRequest:fetch error:&error];
 //
-//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FSCalendarDefaultCellReuseIdentifier forIndexPath:indexPath];
-//    Journal *journal = self.journals[indexPath.row];
-//    cell.textLabel.text = @"TEST";
-//    cell.textLabel.alpha = 1;
+//    if([fetchedObjects count] == 1)
+//        return [fetchedObjects objectAtIndex:0];
+//    else
+//        return nil;
 //
-//    UILabel *testLabel = [[UILabel alloc] init];
-//    testLabel.text = @"TEEEEST";
-//    [cell addSubview:testLabel];
-//
-////    cell.titleLabel.text = journal.title;
-////    cell.detailLabel.text = journal.detail;
-//
-//    return cell;
 //}
 
 #pragma SEGUE TEST STUFF
