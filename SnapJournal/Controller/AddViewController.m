@@ -18,7 +18,12 @@
 @property (nonatomic) NSManagedObjectContext *context;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic)CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (assign, nonatomic) NSNumber *storedLong;
+@property (assign, nonatomic) NSNumber *storedLat;
+
+
+
 
 @end
 
@@ -37,8 +42,7 @@
     NSString *image =@"test URL";
     NSDate *currentDate = [NSDate date];
     NSLog(@"%@",currentDate);
-    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": currentDate};
-    
+    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": currentDate, @"longitude": self.storedLat, @"lattitude": self.storedLat};
     [self.dataHandler saveJournal:results];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -106,14 +110,16 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    NSLog(@"Got Location Updates!");
     
     for (CLLocation *location in locations) {
         NSLog(@"Found Location: (%f, %f)", location.coordinate.latitude, location.coordinate.longitude);
+        self.storedLat = [NSNumber numberWithDouble:location.coordinate.latitude];
+        self.storedLong = [NSNumber numberWithDouble:location.coordinate.longitude];
         MKMapCamera *camera = [MKMapCamera camera];
         camera.centerCoordinate = location.coordinate;
-        camera.altitude = 1000;
+        camera.altitude = 700;
         self.mapView.camera = camera;
+        [self.locationManager stopUpdatingLocation];
     }
 }
 
