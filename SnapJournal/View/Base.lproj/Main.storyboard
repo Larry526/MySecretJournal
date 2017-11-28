@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6cl-zF-z1f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6cl-zF-z1f">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -217,17 +217,32 @@
         <scene sceneID="iDO-bG-CZk">
             <objects>
                 <viewController id="STX-mz-GMo" customClass="CalendarViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="48L-Ws-eXa" customClass="I">
+                    <view key="view" contentMode="scaleToFill" id="48L-Ws-eXa" customClass="CustomTableViewCell">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IeB-mm-IGp">
+                                <rect key="frame" x="0.0" y="392.66666666666674" width="414" height="294.33333333333326"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.81568627449999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="IeB-mm-IGp" firstAttribute="leading" secondItem="VkF-IY-p92" secondAttribute="leading" id="0w9-5v-2hQ"/>
+                            <constraint firstItem="VkF-IY-p92" firstAttribute="trailing" secondItem="IeB-mm-IGp" secondAttribute="trailing" id="6IB-ln-hAi"/>
+                            <constraint firstItem="IeB-mm-IGp" firstAttribute="height" secondItem="48L-Ws-eXa" secondAttribute="height" multiplier="0.4" id="Omc-bl-k3E"/>
+                            <constraint firstItem="VkF-IY-p92" firstAttribute="bottom" secondItem="IeB-mm-IGp" secondAttribute="bottom" id="kP7-6q-jHB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VkF-IY-p92"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calendar" id="0ep-Z8-j3G"/>
+                    <connections>
+                        <outlet property="tableViewContainer" destination="IeB-mm-IGp" id="Rq5-gx-pkh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ct8-Ht-qD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="881" y="624"/>
+            <point key="canvasLocation" x="879.71014492753625" y="623.64130434782612"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="TQx-t2-Eyw">

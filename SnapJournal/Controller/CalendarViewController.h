@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PDTSimpleCalendar/PDTSimpleCalendar.h>
+#import "FSCalendar.h"
 
-@interface CalendarViewController : PDTSimpleCalendarViewController <PDTSimpleCalendarViewDelegate>
+@interface CalendarViewController : UIViewController
 
-@property (nonatomic, strong) UIColor *backgroundColor;
+@property (weak, nonatomic) FSCalendar *calendar;
 
 @end
