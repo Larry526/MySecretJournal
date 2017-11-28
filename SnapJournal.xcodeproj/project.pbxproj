@@ -21,6 +21,8 @@
 		0564E8CA1FCB3EBC003C2F60 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564E8C91FCB3EBC003C2F60 /* CustomTableViewCell.m */; };
 		058E17561FCCC6B5000955CA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 058E17551FCCC6B5000955CA /* MapKit.framework */; };
 		786E3F673D2B928EEAB58F69 /* libPods-SnapJournal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6510D46E4470011B850B590 /* libPods-SnapJournal.a */; };
+		9D180A701FCDC291006DB4B5 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D180A6F1FCDC291006DB4B5 /* CalendarViewController.m */; };
+		9D180A731FCDC5FA006DB4B5 /* CalendarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D180A721FCDC5FA006DB4B5 /* CalendarTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,10 @@
 		0564E8C91FCB3EBC003C2F60 /* CustomTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		058E17551FCCC6B5000955CA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		29DA02780093329B41582705 /* Pods-SnapJournal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapJournal.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapJournal/Pods-SnapJournal.release.xcconfig"; sourceTree = "<group>"; };
+		9D180A6E1FCDC290006DB4B5 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		9D180A6F1FCDC291006DB4B5 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		9D180A711FCDC5FA006DB4B5 /* CalendarTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarTableViewCell.h; sourceTree = "<group>"; };
+		9D180A721FCDC5FA006DB4B5 /* CalendarTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarTableViewCell.m; sourceTree = "<group>"; };
 		B6510D46E4470011B850B590 /* libPods-SnapJournal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SnapJournal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8C709009144A2681443BB4 /* Pods-SnapJournal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapJournal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapJournal/Pods-SnapJournal.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +130,8 @@
 				0546EC041FCA801F00038878 /* Main.storyboard */,
 				0564E8C81FCB3EBC003C2F60 /* CustomTableViewCell.h */,
 				0564E8C91FCB3EBC003C2F60 /* CustomTableViewCell.m */,
+				9D180A711FCDC5FA006DB4B5 /* CalendarTableViewCell.h */,
+				9D180A721FCDC5FA006DB4B5 /* CalendarTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -131,6 +139,8 @@
 		0564E8CD1FCB416A003C2F60 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9D180A6E1FCDC290006DB4B5 /* CalendarViewController.h */,
+				9D180A6F1FCDC291006DB4B5 /* CalendarViewController.m */,
 				0564E8C21FCB3237003C2F60 /* DetailViewController.h */,
 				0564E8C31FCB3237003C2F60 /* DetailViewController.m */,
 				0546EC011FCA801F00038878 /* MainViewController.h */,
@@ -290,7 +300,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0564E8C41FCB3237003C2F60 /* DetailViewController.m in Sources */,
+				9D180A701FCDC291006DB4B5 /* CalendarViewController.m in Sources */,
 				053AF97A1FCB8B4C0033B85F /* DataHandler.m in Sources */,
+				9D180A731FCDC5FA006DB4B5 /* CalendarTableViewCell.m in Sources */,
 				0546EC091FCA801F00038878 /* SnapJournal.xcdatamodeld in Sources */,
 				0564E8CA1FCB3EBC003C2F60 /* CustomTableViewCell.m in Sources */,
 				0510D8261FCB744600579242 /* AddViewController.m in Sources */,
