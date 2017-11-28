@@ -9,7 +9,7 @@
 #import "AddViewController.h"
 #import <Mapkit/Mapkit.h>
 
-@interface AddViewController () <CLLocationManagerDelegate>
+@interface AddViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
@@ -18,7 +18,12 @@
 @property (nonatomic) NSManagedObjectContext *context;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic)CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) NSNumber *storedLong;
+@property (strong, nonatomic) NSNumber *storedLat;
+
+
+
 
 @end
 
@@ -26,18 +31,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self enableLocationServices];
 
     
 }
 
 - (IBAction)saveButtonPressed:(UIButton *)sender {
     NSString *title = self.titleTextField.text;
-    NSString *detail = self.contentTextView.text   ;
+    NSString *detail = self.contentTextView.text;
     NSString *image =@"test URL";
     NSDate *currentDate = [NSDate date];
     NSLog(@"%@",currentDate);
-    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": currentDate};
-    
+    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": currentDate, @"longitude": self.storedLat, @"lattitude": self.storedLat};
     [self.dataHandler saveJournal:results];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -87,6 +92,55 @@
 - (void)disableLocationFeatures {
     [self.locationManager stopUpdatingLocation];
     self.mapView.showsUserLocation = NO;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    switch (status) {
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+            [self enableLocationFeatures];
+            break;
+        case kCLAuthorizationStatusRestricted:
+        case kCLAuthorizationStatusDenied:
+            [self disableLocationFeatures];
+            break;
+        case kCLAuthorizationStatusAuthorizedAlways:
+        case kCLAuthorizationStatusNotDetermined:
+            break;
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    
+    manager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    for (CLLocation *location in locations) {
+        NSLog(@"Found Location: (%f, %f)", location.coordinate.latitude, location.coordinate.longitude);
+        self.storedLat = @(location.coordinate.latitude);
+        self.storedLong = [NSNumber numberWithDouble:location.coordinate.longitude];
+        MKMapCamera *camera = [MKMapCamera camera];
+        camera.centerCoordinate = location.coordinate;
+        camera.altitude = 700;
+        self.mapView.camera = camera;
+        [self.locationManager stopUpdatingLocation];
+    }
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if ([annotation isKindOfClass:MKUserLocation.class]) {
+        return nil;
+    }
+    
+    MKPinAnnotationView *view = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"pin"];
+    
+    if (!view) {
+        view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"pin"];
+        view.animatesDrop = YES;
+        view.canShowCallout = YES;
+    } else {
+        view.annotation = annotation;
+    }
+    
+    return view;
 }
 
 
