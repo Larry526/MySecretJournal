@@ -12,12 +12,13 @@
 #import "Journal+CoreDataClass.h"
 #import "CustomTableViewCell.h"
 
-@interface CalendarViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, FSCalendarDelegate, FSCalendarDataSource>
+@interface CalendarViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, FSCalendarDelegate, FSCalendarDataSource, NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *tableViewContainer;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray <Journal*>*journals;
 @property (strong, nonatomic) DataHandler *dataHandler;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @property (strong, nonatomic) NSDate *selectedDate;
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
@@ -30,14 +31,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
     
 //    DATA STUFF
     
     self.dataHandler = [[DataHandler alloc]init];
-//    [self fetchData];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(fetchData) name:NSManagedObjectContextDidSaveNotification object:nil];
+    self.fetchedResultsController = [self.dataHandler fetchedResultsController];
+    self.fetchedResultsController.delegate = self;
+    
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
     
 //    CALENDAR INITIALIZATION
     
@@ -56,17 +62,10 @@
     calendar.appearance.subtitlePlaceholderColor = [UIColor colorWithRed:1.00 green:0.82 blue:0.00 alpha:1.0];
     calendar.appearance.weekdayTextColor = [UIColor colorWithRed:0.61 green:0.50 blue:0.15 alpha:1.0];
     
-    [calendar setScrollDirection:FSCalendarScrollDirectionVertical];
     calendar.backgroundColor = [UIColor whiteColor];
+    [calendar setScrollDirection:FSCalendarScrollDirectionVertical];
     
 }
-
-
-//-(void)fetchData {
-//    self.journals = [self.dataHandler fetchData];
-//    [self.tableView reloadData];
-//    NSLog(@"%f", self.journals.lastObject.lattitude);
-//}
 
 - (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date
 {
@@ -87,15 +86,15 @@
     return @"Test";
 }
 
-#pragma TABLEVIEW STUFF
+#pragma mark - TABLEVIEW STUFF
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return self.fetchedResultsController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.journals.count;
+    return self.fetchedResultsController.sections[section].numberOfObjects;
 }
 
 -(CalendarTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
