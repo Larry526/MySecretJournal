@@ -168,9 +168,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DxT-QW-cS1">
-                                <rect key="frame" x="125" y="343" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DxT-QW-cS1">
+                                <rect key="frame" x="87" y="314" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="RUW-Vb-UBt"/>
+                                    <constraint firstAttribute="height" constant="128" id="fBi-5C-dsR"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kjl-lx-IGz">
                                 <rect key="frame" x="38" y="506" width="104" height="30"/>
@@ -199,8 +202,25 @@
                                 <rect key="frame" x="156" y="506" width="238" height="176"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYQ-3P-247" userLabel="Get Image">
+                                <rect key="frame" x="172" y="429" width="71" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="N3a-RP-eiC"/>
+                                    <constraint firstAttribute="width" constant="71" id="lOq-2m-AG1"/>
+                                </constraints>
+                                <state key="normal" title="Get Image"/>
+                                <connections>
+                                    <action selector="getImageButtonPressed:" destination="XXT-yO-cEW" eventType="touchUpInside" id="myZ-dh-KWz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DxT-QW-cS1" firstAttribute="centerY" secondItem="efi-Bx-Y61" secondAttribute="centerY" id="Va1-0E-96x"/>
+                            <constraint firstItem="DxT-QW-cS1" firstAttribute="centerX" secondItem="efi-Bx-Y61" secondAttribute="centerX" id="YoI-fn-Hst"/>
+                            <constraint firstItem="kYQ-3P-247" firstAttribute="centerX" secondItem="DxT-QW-cS1" secondAttribute="centerX" id="lW1-rP-dcD"/>
+                            <constraint firstItem="kYQ-3P-247" firstAttribute="centerY" secondItem="DxT-QW-cS1" secondAttribute="centerY" constant="37" id="zDY-Bc-K58"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="efi-Bx-Y61"/>
                     </view>
                     <connections>

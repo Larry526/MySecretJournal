@@ -22,8 +22,8 @@
 @property (strong, nonatomic) NSNumber *storedLong;
 @property (strong, nonatomic) NSNumber *storedLat;
 
-
-
+@property (strong, nonatomic) UIImage *testImage;
+@property (strong, nonatomic) NSString *imageURL;
 
 @end
 
@@ -33,13 +33,12 @@
     [super viewDidLoad];
     [self enableLocationServices];
 
-    
 }
 
 - (IBAction)saveButtonPressed:(UIButton *)sender {
     NSString *title = self.titleTextField.text;
     NSString *detail = self.contentTextView.text;
-    NSString *image =@"test URL";
+    NSString *image = self.imageURL;
     NSDate *currentDate = [NSDate date];
     NSLog(@"%@",currentDate);
     NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": currentDate, @"longitude": self.storedLat, @"lattitude": self.storedLat};
@@ -47,10 +46,38 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-
 - (IBAction)backButtonPressed:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Image Getter
+
+- (IBAction)getImageButtonPressed:(id)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        // not running on simulator, take a picture
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    NSArray *mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:picker.sourceType];
+    NSLog(@"Picking media of types: %@", mediaTypes);
+    picker.mediaTypes = mediaTypes;
+    picker.delegate = self;
+    [self presentViewController:picker animated:YES completion:^{}];
+    
+}
+
+- (void) imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(nonnull NSDictionary<NSString *,id> *)info{
+    NSLog(@"Info: %@", info);
+    self.testImage = info[UIImagePickerControllerOriginalImage];
+    self.imageView.image = self.testImage;
+    
+    self.imageURL = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:[[NSUUID UUID] UUIDString]] stringByAppendingPathExtension:@"png"];
+//    NSData *imageData = UIImagePNGRepresentation(self.testImage);
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (IBAction)getWeatherButtonPressed:(UIButton *)sender {
