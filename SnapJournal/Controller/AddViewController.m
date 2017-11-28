@@ -38,7 +38,7 @@
 
 - (IBAction)saveButtonPressed:(UIButton *)sender {
     NSString *title = self.titleTextField.text;
-    NSString *detail = self.contentTextView.text   ;
+    NSString *detail = self.contentTextView.text;
     NSString *image =@"test URL";
     NSDate *currentDate = [NSDate date];
     NSLog(@"%@",currentDate);
