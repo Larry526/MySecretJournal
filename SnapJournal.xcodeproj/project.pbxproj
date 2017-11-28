@@ -20,6 +20,7 @@
 		0564E8C41FCB3237003C2F60 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564E8C31FCB3237003C2F60 /* DetailViewController.m */; };
 		0564E8CA1FCB3EBC003C2F60 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0564E8C91FCB3EBC003C2F60 /* CustomTableViewCell.m */; };
 		058E17561FCCC6B5000955CA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 058E17551FCCC6B5000955CA /* MapKit.framework */; };
+		05C93D3E1FCE0624001B9618 /* WeatherAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C93D3D1FCE0624001B9618 /* WeatherAPI.m */; };
 		786E3F673D2B928EEAB58F69 /* libPods-SnapJournal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6510D46E4470011B850B590 /* libPods-SnapJournal.a */; };
 		9D180A701FCDC291006DB4B5 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D180A6F1FCDC291006DB4B5 /* CalendarViewController.m */; };
 		9D180A731FCDC5FA006DB4B5 /* CalendarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D180A721FCDC5FA006DB4B5 /* CalendarTableViewCell.m */; };
@@ -48,6 +49,8 @@
 		0564E8C81FCB3EBC003C2F60 /* CustomTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		0564E8C91FCB3EBC003C2F60 /* CustomTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		058E17551FCCC6B5000955CA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		05C93D3C1FCE0624001B9618 /* WeatherAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherAPI.h; sourceTree = "<group>"; };
+		05C93D3D1FCE0624001B9618 /* WeatherAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherAPI.m; sourceTree = "<group>"; };
 		29DA02780093329B41582705 /* Pods-SnapJournal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapJournal.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapJournal/Pods-SnapJournal.release.xcconfig"; sourceTree = "<group>"; };
 		9D180A6E1FCDC290006DB4B5 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		9D180A6F1FCDC291006DB4B5 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				0546EC071FCA801F00038878 /* SnapJournal.xcdatamodeld */,
+				05C93D3C1FCE0624001B9618 /* WeatherAPI.h */,
+				05C93D3D1FCE0624001B9618 /* WeatherAPI.m */,
 				053AF9781FCB8B4C0033B85F /* DataHandler.h */,
 				053AF9791FCB8B4C0033B85F /* DataHandler.m */,
 				055640081FCDC5880018FE4F /* Journal+MonthSection.h */,
@@ -300,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0564E8C41FCB3237003C2F60 /* DetailViewController.m in Sources */,
+				05C93D3E1FCE0624001B9618 /* WeatherAPI.m in Sources */,
 				9D180A701FCDC291006DB4B5 /* CalendarViewController.m in Sources */,
 				053AF97A1FCB8B4C0033B85F /* DataHandler.m in Sources */,
 				9D180A731FCDC5FA006DB4B5 /* CalendarTableViewCell.m in Sources */,
