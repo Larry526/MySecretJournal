@@ -16,8 +16,6 @@
 
 -(void)saveJournal:(NSDictionary*) dict;
 
-//-(NSArray<Journal *>*) fetchData;
-
 -(NSFetchedResultsController*) fetchedResultsController;
 
 
