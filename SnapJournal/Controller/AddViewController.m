@@ -8,12 +8,16 @@
 
 #import "AddViewController.h"
 #import <Mapkit/Mapkit.h>
+#import "WeatherAPI.h"
+#import "WeatherHandler.h"
 
 @interface AddViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *weatherIcon;
+@property (strong, nonatomic) NSString *conditionImageName;
 
 @property (nonatomic) NSManagedObjectContext *context;
 
@@ -24,6 +28,7 @@
 
 @property (strong, nonatomic) UIImage *testImage;
 @property (strong, nonatomic) NSString *imageURL;
+@property (strong, nonatomic) NSDictionary *weatherDict;
 
 @end
 
@@ -40,8 +45,15 @@
     NSString *detail = self.contentTextView.text;
     NSString *image = self.imageURL;
     NSDate *currentDate = [NSDate date];
-    NSLog(@"%@",currentDate);
-    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": currentDate, @"longitude": self.storedLat, @"lattitude": self.storedLat};
+    NSString *city = self.weatherDict[@"name"];
+    NSNumber *temp = self.weatherDict[@"main"][@"temp"];
+    double tempCoverted = [temp doubleValue] - 273.15;
+    temp = [NSNumber numberWithDouble:tempCoverted];
+    NSString *country = self.weatherDict[@"sys"][@"country"];
+    NSNumber *conditionID = self.weatherDict[@"weather"][0][@"id"];
+    
+    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": currentDate, @"longitude": self.storedLat, @"lattitude": self.storedLat, @"city": city, @"temp":temp, @"country":country, @"condition":conditionID};
+    
     [self.dataHandler saveJournal:results];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -80,12 +92,22 @@
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
+#pragma mark - Weather Getter
+
 - (IBAction)getWeatherButtonPressed:(UIButton *)sender {
-    
+    [WeatherAPI searchLat:[NSString stringWithFormat:@"%@", self.storedLat] Lon: [NSString stringWithFormat: @"%@",self.storedLong] complete:^(NSDictionary *results) {
+        self.weatherDict = results;
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            NSInteger conditionID = [self.weatherDict[@"weather"][0][@"id"] integerValue];
+            WeatherHandler *weatherhandler = [[WeatherHandler alloc]init];
+            self.conditionImageName = [weatherhandler getWeatherIcon:conditionID];
+            self.weatherIcon.image = [UIImage imageNamed:self.conditionImageName];
+        }];
+        
+    }];
 }
 
-- (IBAction)getLocationButtonPressed:(UIButton *)sender {
-}
 
 #pragma mark - CLLocation and Map
 

@@ -32,10 +32,13 @@
     journal.title = dict[@"title"];
     journal.detail = dict[@"detail"];
     journal.image = dict[@"image"];
-    journal.weather = dict[@"weather"];
     journal.longitude =  [dict[@"longitude"] doubleValue];
     journal.lattitude =  [dict[@"lattitude"] doubleValue];
+    journal.city = dict[@"city"];
+    journal.temp = [dict[@"temp"] doubleValue];
     journal.timeStamp = dict[@"date"];
+    journal.country = dict[@"country"];
+    journal.condition = [dict[@"condition"] integerValue];
     [self.delegate saveContext];
 }
 
