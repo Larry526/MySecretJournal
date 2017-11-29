@@ -45,10 +45,11 @@
     if ([segue.identifier isEqualToString:@"AddJournal"]) {
         AddViewController *avc = segue.destinationViewController;
         avc.dataHandler = self.dataHandler;
-    } else if ([segue.identifier isEqualToString:@"Details"]) {
-        DetailViewController *dvc = segue.destinationViewController;
-        dvc.dataHandler = self.dataHandler;
     }
+//    else if ([segue.identifier isEqualToString:@"Details"]) {
+//        DetailViewController *dvc = segue.destinationViewController;
+//        dvc.dataHandler = self.dataHandler;
+//    }
 }
 
 #pragma mark - TableView”

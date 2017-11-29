@@ -126,26 +126,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0D-tB-JQn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0D-tB-JQn">
                                 <rect key="frame" x="119" y="151" width="183" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bpp-0o-vTY">
-                                <rect key="frame" x="87" y="314" width="240" height="128"/>
+                                <rect key="frame" x="87" y="221" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="LYC-Of-Mog"/>
-                                    <constraint firstAttribute="width" constant="240" id="Xoo-0S-KWD"/>
+                                    <constraint firstAttribute="width" constant="240" id="34v-Ug-qnk"/>
+                                    <constraint firstAttribute="height" constant="128" id="ZdT-vf-K7J"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="u0D-tB-JQn" firstAttribute="top" secondItem="Nl6-3r-Eri" secondAttribute="bottom" constant="18" id="CNm-4N-8Na"/>
-                            <constraint firstItem="bpp-0o-vTY" firstAttribute="centerY" secondItem="nny-DW-Bgb" secondAttribute="centerY" id="dHJ-O7-Qb1"/>
+                            <constraint firstItem="u0D-tB-JQn" firstAttribute="centerX" secondItem="nny-DW-Bgb" secondAttribute="centerX" id="I7h-vK-iKd"/>
+                            <constraint firstItem="bpp-0o-vTY" firstAttribute="centerX" secondItem="nny-DW-Bgb" secondAttribute="centerX" id="IYt-yE-bMJ"/>
+                            <constraint firstItem="bpp-0o-vTY" firstAttribute="top" secondItem="u0D-tB-JQn" secondAttribute="bottom" constant="49" id="JrG-G9-C6M"/>
+                            <constraint firstItem="u0D-tB-JQn" firstAttribute="top" secondItem="Nl6-3r-Eri" secondAttribute="bottom" constant="18" id="U82-ZY-4XK"/>
                             <constraint firstItem="Nl6-3r-Eri" firstAttribute="centerX" secondItem="nny-DW-Bgb" secondAttribute="centerX" id="kJh-SI-zyL"/>
-                            <constraint firstItem="bpp-0o-vTY" firstAttribute="centerX" secondItem="nny-DW-Bgb" secondAttribute="centerX" id="pNI-XM-xyB"/>
                             <constraint firstItem="Nl6-3r-Eri" firstAttribute="top" secondItem="nny-DW-Bgb" secondAttribute="top" constant="92" id="zLM-7M-9uA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nny-DW-Bgb"/>
