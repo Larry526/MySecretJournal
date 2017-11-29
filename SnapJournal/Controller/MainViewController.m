@@ -46,10 +46,13 @@
         AddViewController *avc = segue.destinationViewController;
         avc.dataHandler = self.dataHandler;
     }
-//    else if ([segue.identifier isEqualToString:@"Details"]) {
-//        DetailViewController *dvc = segue.destinationViewController;
-//        dvc.dataHandler = self.dataHandler;
-//    }
+    else if ([segue.identifier isEqualToString:@"Details"]) {
+        DetailViewController *dvc = segue.destinationViewController;
+        dvc.dataHandler = self.dataHandler;
+        NSIndexPath *path = [self.tableView indexPathForCell:sender];
+        dvc.journal = [self.fetchedResultsController objectAtIndexPath:path];
+        
+    }
 }
 
 #pragma mark - TableView”

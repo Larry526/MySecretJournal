@@ -17,25 +17,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.dataHandler = [[DataHandler alloc]init];
-    self.fetchedResultsController = [self.dataHandler fetchedResultsController];
-    self.fetchedResultsController.delegate = self;
-    
-    NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    
-    Journal *journal = self.fetchedResultsController.fetchedObjects[0];
-    
+//
+//    self.dataHandler = [[DataHandler alloc]init];
+//    self.fetchedResultsController = [self.dataHandler fetchedResultsController];
+//    self.fetchedResultsController.delegate = self;
+//
+//    NSError *error = nil;
+//    if (![self.fetchedResultsController performFetch:&error]) {
+//
+//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//        abort();
+//    }
+//
+    Journal *journal = self.journal;
+//
     self.dvcTitleLabel.text = journal.title;
     self.dvcDetailLabel.text = journal.detail;
-    NSURL *imageURL = [NSURL fileURLWithPath:journal.image];
-    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-    self.dvcImageView.image = [UIImage imageWithData:imageData];
+    NSData *imageData = [NSData dataWithContentsOfFile:journal.image];
+    self.dvcImageView.image = [[UIImage alloc] initWithData:imageData];
+    
+    
     
 }
 

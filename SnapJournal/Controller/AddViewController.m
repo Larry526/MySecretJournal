@@ -76,7 +76,8 @@
     self.imageView.image = self.testImage;
     
     self.imageURL = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:[[NSUUID UUID] UUIDString]] stringByAppendingPathExtension:@"png"];
-//    NSData *imageData = UIImagePNGRepresentation(self.testImage);
+    NSData *imageData = UIImagePNGRepresentation(self.testImage);
+    [imageData writeToFile:self.imageURL atomically:YES];
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
