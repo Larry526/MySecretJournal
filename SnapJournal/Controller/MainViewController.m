@@ -11,7 +11,6 @@
 #import "DetailViewController.h"
 #import "CustomTableViewCell.h"
 #import "DataHandler.h"
-#import "Date+CoreDataClass.h"
 #import "Journal+MonthSection.h"
 #import "Journal+CoreDataClass.h"
 
