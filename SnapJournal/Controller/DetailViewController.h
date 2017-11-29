@@ -7,9 +7,16 @@
 //
 
 #import "MainViewController.h"
+#import "DataHandler.h"
 
 @interface DetailViewController : MainViewController
 
 @property (strong, nonatomic) NSDate *selectedDate;
+@property (nonatomic) DataHandler *dataHandler;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+
+@property (weak, nonatomic) IBOutlet UILabel *dvcTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dvcDetailLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *dvcImageView;
 
 @end

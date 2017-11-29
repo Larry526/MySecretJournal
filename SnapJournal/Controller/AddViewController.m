@@ -9,7 +9,7 @@
 #import "AddViewController.h"
 #import <Mapkit/Mapkit.h>
 
-@interface AddViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
+@interface AddViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
