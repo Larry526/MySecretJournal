@@ -123,7 +123,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"Details"]) {
         DetailViewController *dvc = segue.destinationViewController;
-        dvc.dataHandler = self.dataHandler;
+//        dvc.dataHandler = self.dataHandler;
     }
 }
 
