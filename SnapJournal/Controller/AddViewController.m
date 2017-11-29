@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *weatherIcon;
 @property (strong, nonatomic) NSString *conditionImageName;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (nonatomic) NSManagedObjectContext *context;
 
