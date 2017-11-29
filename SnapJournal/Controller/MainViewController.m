@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "AddViewController.h"
+#import "DetailViewController.h"
 #import "CustomTableViewCell.h"
 #import "DataHandler.h"
 #import "Date+CoreDataClass.h"
@@ -44,11 +45,13 @@
     if ([segue.identifier isEqualToString:@"AddJournal"]) {
         AddViewController *avc = segue.destinationViewController;
         avc.dataHandler = self.dataHandler;
+    } else if ([segue.identifier isEqualToString:@"Details"]) {
+        DetailViewController *dvc = segue.destinationViewController;
+        dvc.dataHandler = self.dataHandler;
     }
 }
 
-
-#pragma mark - TableView
+#pragma mark - TableView”
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.fetchedResultsController.sections.count;

@@ -32,8 +32,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    DATA STUFF
-    
     self.dataHandler = [[DataHandler alloc]init];
     self.fetchedResultsController = [self.dataHandler fetchedResultsController];
     self.fetchedResultsController.delegate = self;
@@ -45,8 +43,52 @@
         abort();
     }
     
-//    CALENDAR INITIALIZATION
+    [self calendarStarted];
     
+}
+
+//- (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date
+//{
+//
+//}
+
+-(void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date
+{
+    
+// CALENDAR SETUP
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [cal components:(NSCalendarUnitYear |
+                                               NSCalendarUnitMonth |
+                                               NSCalendarUnitDay)
+                                     fromDate:date];
+    NSDate *dayStart = [cal dateFromComponents:comps];
+    [comps setHour:23];
+    [comps setMinute:59];
+    [comps setSecond:59];
+    NSDate *dayEnd = [cal dateFromComponents:comps];
+    NSPredicate *itemsOnDay = [NSPredicate predicateWithFormat:@"(timeStamp >= %@) AND (timeStamp <= %@)", dayStart, dayEnd];
+    [self.fetchedResultsController.fetchRequest setPredicate:itemsOnDay];
+//    NSArray *savedItems = self.fetchedResultsController.fetchedObjects;
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    [self.tableView reloadData];
+    
+//  NSDATEFORMATTER
+    NSDate *selectedDate = date;
+    NSDateFormatter *fmtr = [[NSDateFormatter alloc]init];
+    [fmtr setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
+//    [fmtr stringFromDate:selectedDate];
+    NSLog(@"Selected Date: %@", [fmtr stringFromDate:selectedDate]);
+    
+    // when "date" is clicked segue into DetailViewController with that date's entries
+    
+}
+
+- (void) calendarStarted {
     FSCalendar *calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height/2)];
     calendar.dataSource = self;
     calendar.delegate = self;
@@ -64,16 +106,6 @@
     
     calendar.backgroundColor = [UIColor whiteColor];
     [calendar setScrollDirection:FSCalendarScrollDirectionVertical];
-    
-}
-
-- (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date
-{
-    NSString *dateString = [self.dateFormatter stringFromDate:date];
-    if ([_datesWithEvent containsObject:dateString]) {
-        return 1;
-    }
-    return 0;
 }
 
 - (void) calendarTapped {
@@ -83,10 +115,24 @@
 }
 
 - (nullable NSString *)calendar:(FSCalendar *)calendar subtitleForDate:(NSDate *)date{
-    return @"Test";
+    return @"";
 }
 
-#pragma mark - TABLEVIEW STUFF
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"Details"]) {
+        DetailViewController *dvc = segue.destinationViewController;
+        dvc.dataHandler = self.dataHandler;
+    }
+}
+
+#pragma mark - Table View
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return self.fetchedResultsController.sections[section].name;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.fetchedResultsController.sections.count;
@@ -103,51 +149,68 @@
     CalendarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     if (!cell)
         cell = [[CalendarTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: cellIdentifier];
-    Journal *journal = self.journals[indexPath.row];
+    Journal *journal = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.calendarCellLabel.text = journal.title;
     NSLog(@"Date: %@", journal.timeStamp);
 
     return cell;
+    
 }
 
-//-(void)readSelectedInstall:(NSString *)projIDString
-//{
-//
-//    NSArray *fetchedObjects;
-//    NSManagedObjectContext *context = [self managedObjectContext];
-//    NSFetchRequest *fetch = [[NSFetchRequest alloc] init];
-//    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"timeStamp"  inManagedObjectContext: context];
-//    [fetch setEntity:entityDescription];
-//    [fetch setPredicate:[NSPredicate predicateWithFormat:@"date = %@",projIDString]];
-//    NSError * error = nil;
-//    fetchedObjects = [context executeFetchRequest:fetch error:&error];
-//
-//    if([fetchedObjects count] == 1)
-//        return [fetchedObjects objectAtIndex:0];
-//    else
-//        return nil;
-//
-//}
+#pragma mark - Fetched results controller
 
-#pragma SEGUE TEST STUFF
 
-//- (void)collectionView:(PDTSimpleCalendarViewController *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.item == 0)
-//    {
-//        [self performSegueWithIdentifier:@"segueToDetailViewController" sender:self];
-//    }
-//}
-//
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    if ([[segue identifier] isEqualToString:@"segueToDetailViewController"])
-//    {
-//        NSIndexPath *selectedIndexPath = [self.calendarController indexPathForPreferredFocusedViewInCollectionView:sender];
-//
-//        DetailViewController *destVC = [segue destinationViewController];
-//        destVC.selectedDate = self.selectedDate;
-//    }
-//}
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        default:
+            return;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            //            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView endUpdates];
+}
 
 @end
