@@ -33,7 +33,8 @@
 //
     self.dvcTitleLabel.text = journal.title;
     self.dvcDetailLabel.text = journal.detail;
-    NSData *imageData = [NSData dataWithContentsOfFile:journal.image];
+    NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:journal.image];
+    NSData *imageData = [NSData dataWithContentsOfFile:fullPath];
     self.dvcImageView.image = [[UIImage alloc] initWithData:imageData];
     
     

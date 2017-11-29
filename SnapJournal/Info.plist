@@ -4,12 +4,8 @@
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your permission to detect your current location.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>We need your permission to access your photos.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We need your permission to access your photos.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>We need your permission to access your photos.</string>
+	<string>We need your permission to access your camera.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

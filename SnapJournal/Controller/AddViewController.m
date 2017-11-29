@@ -87,9 +87,12 @@
     self.testImage = info[UIImagePickerControllerOriginalImage];
     self.imageView.image = self.testImage;
     
-    self.imageURL = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:[[NSUUID UUID] UUIDString]] stringByAppendingPathExtension:@"png"];
+    self.imageURL = [[[NSUUID UUID] UUIDString] stringByAppendingPathExtension:@"png"];
+    
+    NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:self.imageURL];
+    
     NSData *imageData = UIImagePNGRepresentation(self.testImage);
-    [imageData writeToFile:self.imageURL atomically:YES];
+    [imageData writeToFile:fullPath atomically:YES];
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
