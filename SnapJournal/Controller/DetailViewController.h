@@ -12,7 +12,7 @@
 @interface DetailViewController : MainViewController
 
 @property (strong, nonatomic) NSDate *selectedDate;
-@property (nonatomic) DataHandler *dataHandler;
+@property (nonatomic) Journal *journal;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @property (weak, nonatomic) IBOutlet UILabel *dvcTitleLabel;

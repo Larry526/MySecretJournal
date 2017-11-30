@@ -12,7 +12,7 @@
 #import "Journal+CoreDataClass.h"
 #import "CustomTableViewCell.h"
 
-@interface CalendarViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, FSCalendarDelegate, FSCalendarDataSource, NSFetchedResultsControllerDelegate>
+@interface CalendarViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, FSCalendarDelegate, FSCalendarDataSource, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *tableViewContainer;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -31,6 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.calendar.translatesAutoresizingMaskIntoConstraints = YES;
+    self.tableView.translatesAutoresizingMaskIntoConstraints = YES;
     
     self.dataHandler = [[DataHandler alloc]init];
     self.fetchedResultsController = [self.dataHandler fetchedResultsController];
@@ -68,7 +70,7 @@
     NSDate *dayEnd = [cal dateFromComponents:comps];
     NSPredicate *itemsOnDay = [NSPredicate predicateWithFormat:@"(timeStamp >= %@) AND (timeStamp <= %@)", dayStart, dayEnd];
     [self.fetchedResultsController.fetchRequest setPredicate:itemsOnDay];
-//    NSArray *savedItems = self.fetchedResultsController.fetchedObjects;
+
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
         
@@ -84,12 +86,17 @@
 //    [fmtr stringFromDate:selectedDate];
     NSLog(@"Selected Date: %@", [fmtr stringFromDate:selectedDate]);
     
-    // when "date" is clicked segue into DetailViewController with that date's entries
+//    GESTURE STUFF
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(calendarTapped:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [tapGesture setDelegate:self];
+    [self.calendar addGestureRecognizer:tapGesture];
     
 }
 
 - (void) calendarStarted {
-    FSCalendar *calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height/2)];
+    FSCalendar *calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     calendar.dataSource = self;
     calendar.delegate = self;
     [self.view addSubview:calendar];
@@ -108,11 +115,16 @@
     [calendar setScrollDirection:FSCalendarScrollDirectionVertical];
 }
 
-- (void) calendarTapped {
+- (void) calendarTapped: (CalendarTableViewCell*)sender {
+    
     [UIView animateWithDuration:0.5f animations:^{
-        self.calendar.frame = CGRectOffset(self.calendar.frame, 0, -100);
+        self.calendar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height/2);
+        self.calendar.bounds = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height/2);
+        self.tableView.alpha = 1;
+        NSLog(@"Tap gesture success");
     }];
 }
+
 
 - (nullable NSString *)calendar:(FSCalendar *)calendar subtitleForDate:(NSDate *)date{
     return @"";
@@ -123,7 +135,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"Details"]) {
         DetailViewController *dvc = segue.destinationViewController;
-        dvc.dataHandler = self.dataHandler;
+//        dvc.dataHandler = self.dataHandler;
     }
 }
 
@@ -151,8 +163,7 @@
         cell = [[CalendarTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: cellIdentifier];
     Journal *journal = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.calendarCellLabel.text = journal.title;
-    NSLog(@"Date: %@", journal.timeStamp);
-
+    
     return cell;
     
 }

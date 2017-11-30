@@ -13,7 +13,7 @@
 - (NSString*) month {
     NSDateFormatter *fmtr = [[NSDateFormatter alloc] init];
     fmtr.timeStyle = NSDateFormatterNoStyle;
-    fmtr.dateFormat = @"MMMM-YYYY";
+    fmtr.dateFormat = @"MMMM YYYY";
     return [fmtr stringFromDate:self.timeStamp];
 }
 
