@@ -17,28 +17,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.dataHandler = [[DataHandler alloc]init];
-    self.fetchedResultsController = [self.dataHandler fetchedResultsController];
-    self.fetchedResultsController.delegate = self;
-    
-    NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    
-    Journal *journal = self.fetchedResultsController.fetchedObjects[0];
-    
+
+    Journal *journal = self.journal;
+
     self.dvcTitleLabel.text = journal.title;
-    self.dvcDetailLabel.text = journal.description;
-    self.dvcImageView.image = [UIImage imageWithData:journal.image];
-    NSData *imageData = [NSData dataWithContentsOfFile:journal.image];
-//    NSURL *imageURL = [NSURL URLWithString:journal.image];
-    self.dvcImageView.image = [NSData dataWithContentsOfURL:imageData];
-    
-    
+    self.dvcDetailLabel.text = journal.detail;
+    NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:journal.image];
+    NSData *imageData = [NSData dataWithContentsOfFile:fullPath];
+    self.dvcImageView.image = [[UIImage alloc] initWithData:imageData];
+
 }
 
 - (IBAction)backButtonPressed:(UIButton *)sender {

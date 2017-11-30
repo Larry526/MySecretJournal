@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *weatherIcon;
 @property (strong, nonatomic) NSString *conditionImageName;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) NSDate *currentDate;
 
 @property (nonatomic) NSManagedObjectContext *context;
 
@@ -37,6 +39,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self enableLocationServices];
+    
+    self.currentDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    dateFormatter.dateFormat = @"MMMM dd, YYYY";
+    self.dateLabel.text = [dateFormatter stringFromDate: self.currentDate];
 
 }
 
@@ -44,7 +51,6 @@
     NSString *title = self.titleTextField.text;
     NSString *detail = self.contentTextView.text;
     NSString *image = self.imageURL;
-    NSDate *currentDate = [NSDate date];
     NSString *city = self.weatherDict[@"name"];
     NSNumber *temp = self.weatherDict[@"main"][@"temp"];
     double tempCoverted = [temp doubleValue] - 273.15;
@@ -52,7 +58,7 @@
     NSString *country = self.weatherDict[@"sys"][@"country"];
     NSNumber *conditionID = self.weatherDict[@"weather"][0][@"id"];
     
-    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": currentDate, @"longitude": self.storedLat, @"lattitude": self.storedLat, @"city": city, @"temp":temp, @"country":country, @"condition":conditionID};
+    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": self.currentDate, @"longitude": self.storedLat, @"lattitude": self.storedLat, @"city": city, @"temp":temp, @"country":country, @"condition":conditionID};
     
     [self.dataHandler saveJournal:results];
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -87,14 +93,19 @@
     self.testImage = info[UIImagePickerControllerOriginalImage];
     self.imageView.image = self.testImage;
     
-    self.imageURL = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:[[NSUUID UUID] UUIDString]] stringByAppendingPathExtension:@"png"];
-//    NSData *imageData = UIImagePNGRepresentation(self.testImage);
+    self.imageURL = [[[NSUUID UUID] UUIDString] stringByAppendingPathExtension:@"png"];
+    
+    NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:self.imageURL];
+    
+    NSData *imageData = UIImagePNGRepresentation(self.testImage);
+    [imageData writeToFile:fullPath atomically:YES];
+    
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
-#pragma mark - Weather Getter
+#pragma mark - Weather API Call
 
-- (IBAction)getWeatherButtonPressed:(UIButton *)sender {
+- (void)getWeatherUpdate {
     [WeatherAPI searchLat:[NSString stringWithFormat:@"%@", self.storedLat] Lon: [NSString stringWithFormat: @"%@",self.storedLong] complete:^(NSDictionary *results) {
         self.weatherDict = results;
         
@@ -172,6 +183,8 @@
         self.mapView.camera = camera;
         [self.locationManager stopUpdatingLocation];
     }
+    
+    [self getWeatherUpdate];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {

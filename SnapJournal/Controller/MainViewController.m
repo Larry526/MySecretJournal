@@ -44,13 +44,17 @@
     if ([segue.identifier isEqualToString:@"AddJournal"]) {
         AddViewController *avc = segue.destinationViewController;
         avc.dataHandler = self.dataHandler;
-    } else if ([segue.identifier isEqualToString:@"Details"]) {
+    }
+    else if ([segue.identifier isEqualToString:@"Details"]) {
         DetailViewController *dvc = segue.destinationViewController;
         dvc.dataHandler = self.dataHandler;
+        NSIndexPath *path = [self.tableView indexPathForCell:sender];
+        dvc.journal = [self.fetchedResultsController objectAtIndexPath:path];
+        
     }
 }
 
-#pragma mark - TableView”
+#pragma mark - TableView
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.fetchedResultsController.sections.count;
@@ -71,6 +75,19 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return self.fetchedResultsController.sections[section].name;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        
+        NSError *error = nil;
+        if (![context save:&error]) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
 }
 
 #pragma mark - Fetched results controller
