@@ -8,8 +8,10 @@
 
 #import "DetailViewController.h"
 #import "DataHandler.h"
+#import <MapKit/MapKit.h>
 
 @interface DetailViewController () <NSFetchedResultsControllerDelegate>
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
 
@@ -37,7 +39,17 @@
     NSData *imageData = [NSData dataWithContentsOfFile:fullPath];
     self.dvcImageView.image = [[UIImage alloc] initWithData:imageData];
     
+    CLLocationCoordinate2D location;
+    location.latitude = journal.lattitude;
+    location.longitude = journal.longitude;
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    annotation.coordinate = location;
+    [self.mapView addAnnotation: annotation];
     
+    MKMapCamera *camera = [MKMapCamera camera];
+    camera.centerCoordinate = location;
+    camera.altitude = 700;
+    self.mapView.camera = camera;
     
 }
 

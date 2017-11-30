@@ -53,7 +53,7 @@
     NSString *country = self.weatherDict[@"sys"][@"country"];
     NSNumber *conditionID = self.weatherDict[@"weather"][0][@"id"];
     
-    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": currentDate, @"longitude": self.storedLat, @"lattitude": self.storedLat, @"city": city, @"temp":temp, @"country":country, @"condition":conditionID};
+    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": currentDate, @"longitude": self.storedLong, @"lattitude": self.storedLat, @"city": city, @"temp":temp, @"country":country, @"condition":conditionID};
     
     [self.dataHandler saveJournal:results];
     [self dismissViewControllerAnimated:YES completion:nil];
