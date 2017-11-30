@@ -85,6 +85,8 @@
         self.contentTextView.text = self.journal.detail;
         NSString *title = self.titleTextField.text;
         NSString *detail = self.contentTextView.text;
+//        NSEntityDescription *entity = [NSEntityDescription entityForName:@"MyTable"
+//                                                  inManagedObjectContext:managedObjectContext];
         
         
     } else {
