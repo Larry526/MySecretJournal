@@ -194,6 +194,20 @@
                                     <constraint firstItem="bbd-Mg-AKn" firstAttribute="height" secondItem="DIo-xh-SPZ" secondAttribute="height" multiplier="0.3" id="zh2-j8-WnB"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0D-tB-JQn">
+                                <rect key="frame" x="0.0" y="594.66666666666663" width="414" height="141.33333333333337"/>
+                                <color key="backgroundColor" red="0.94518297910000004" green="0.94499510529999997" blue="0.949013412" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Detail">
+                                        <attributes>
+                                            <color key="NSColor" red="0.54782229661941528" green="0.45030248165130615" blue="0.019641473889350891" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nl6-3r-Eri">
                                 <rect key="frame" x="0.0" y="534.66666666666663" width="414" height="59"/>
                                 <color key="backgroundColor" red="0.94518297910000004" green="0.94499510529999997" blue="0.949013412" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -213,25 +227,28 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0D-tB-JQn">
-                                <rect key="frame" x="0.0" y="594.66666666666663" width="414" height="141.33333333333337"/>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fxt-IJ-ddC">
+                                <rect key="frame" x="0.0" y="534.66666666666663" width="414" height="59"/>
                                 <color key="backgroundColor" red="0.94518297910000004" green="0.94499510529999997" blue="0.949013412" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Detail">
-                                        <attributes>
-                                            <color key="NSColor" red="0.54782229661941528" green="0.45030248165130615" blue="0.019641473889350891" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="117-zk-Si1">
+                                <rect key="frame" x="0.0" y="593.66666666666663" width="414" height="142.33333333333337"/>
+                                <color key="backgroundColor" red="0.94518297910000004" green="0.94499510529999997" blue="0.949013412" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="AKt-EJ-LuA" firstAttribute="height" secondItem="Kz1-hf-uVG" secondAttribute="height" multiplier="0.125" id="2WO-uf-Cvs"/>
                             <constraint firstItem="nny-DW-Bgb" firstAttribute="trailing" secondItem="Nl6-3r-Eri" secondAttribute="trailing" id="3Yj-5Y-Yxd"/>
+                            <constraint firstItem="nny-DW-Bgb" firstAttribute="bottom" secondItem="117-zk-Si1" secondAttribute="bottom" id="52R-PA-BCq"/>
+                            <constraint firstItem="Fxt-IJ-ddC" firstAttribute="leading" secondItem="nny-DW-Bgb" secondAttribute="leading" id="5oG-Mb-Ny9"/>
                             <constraint firstItem="LG3-5K-WRc" firstAttribute="height" secondItem="Kz1-hf-uVG" secondAttribute="height" multiplier="0.25" id="Cii-mD-oRb"/>
+                            <constraint firstItem="Fxt-IJ-ddC" firstAttribute="top" secondItem="DIo-xh-SPZ" secondAttribute="bottom" constant="1" id="Dd1-zH-flA"/>
+                            <constraint firstItem="u0D-tB-JQn" firstAttribute="top" secondItem="Fxt-IJ-ddC" secondAttribute="bottom" constant="1" id="DqP-Mh-yRA"/>
                             <constraint firstItem="AKt-EJ-LuA" firstAttribute="top" secondItem="Kz1-hf-uVG" secondAttribute="top" id="G06-z1-sNW"/>
                             <constraint firstItem="bpp-0o-vTY" firstAttribute="leading" secondItem="nny-DW-Bgb" secondAttribute="leading" id="HVZ-JR-8nm"/>
                             <constraint firstItem="Nl6-3r-Eri" firstAttribute="height" secondItem="Kz1-hf-uVG" secondAttribute="height" multiplier="0.08" constant="0.070000000000000007" id="IDt-vq-rfy"/>
@@ -243,20 +260,25 @@
                             <constraint firstItem="LG3-5K-WRc" firstAttribute="top" secondItem="bpp-0o-vTY" secondAttribute="bottom" constant="1" id="Y5X-tE-6v2"/>
                             <constraint firstItem="bpp-0o-vTY" firstAttribute="trailing" secondItem="nny-DW-Bgb" secondAttribute="trailing" id="YtW-KZ-cWm"/>
                             <constraint firstItem="nny-DW-Bgb" firstAttribute="bottom" secondItem="u0D-tB-JQn" secondAttribute="bottom" id="ZGf-zw-Lzu"/>
+                            <constraint firstItem="117-zk-Si1" firstAttribute="top" secondItem="Nl6-3r-Eri" secondAttribute="bottom" id="a3u-r6-cgv"/>
                             <constraint firstItem="u0D-tB-JQn" firstAttribute="top" secondItem="Nl6-3r-Eri" secondAttribute="bottom" constant="1" id="a7N-2u-qI0"/>
                             <constraint firstItem="LG3-5K-WRc" firstAttribute="leading" secondItem="nny-DW-Bgb" secondAttribute="leading" id="buP-wc-ZOf"/>
                             <constraint firstItem="Nl6-3r-Eri" firstAttribute="top" secondItem="LG3-5K-WRc" secondAttribute="bottom" constant="1" id="cad-yG-Rra"/>
                             <constraint firstItem="Nl6-3r-Eri" firstAttribute="leading" secondItem="nny-DW-Bgb" secondAttribute="leading" id="cgd-pk-cby"/>
                             <constraint firstItem="LG3-5K-WRc" firstAttribute="width" secondItem="Kz1-hf-uVG" secondAttribute="width" multiplier="0.5" id="dfV-wT-9dH"/>
                             <constraint firstItem="nny-DW-Bgb" firstAttribute="trailing" secondItem="u0D-tB-JQn" secondAttribute="trailing" id="feb-LK-gA3"/>
+                            <constraint firstItem="nny-DW-Bgb" firstAttribute="trailing" secondItem="117-zk-Si1" secondAttribute="trailing" id="jdL-o5-dD3"/>
                             <constraint firstItem="DIo-xh-SPZ" firstAttribute="height" secondItem="Kz1-hf-uVG" secondAttribute="height" multiplier="0.25" id="kQH-ba-zss"/>
                             <constraint firstItem="bpp-0o-vTY" firstAttribute="height" secondItem="Kz1-hf-uVG" secondAttribute="height" multiplier="0.35" id="n7z-kG-Lkb"/>
                             <constraint firstItem="nny-DW-Bgb" firstAttribute="trailing" secondItem="DIo-xh-SPZ" secondAttribute="trailing" id="nzM-p3-fIm"/>
+                            <constraint firstItem="117-zk-Si1" firstAttribute="leading" secondItem="nny-DW-Bgb" secondAttribute="leading" id="o2H-qH-qPJ"/>
                             <constraint firstItem="u0D-tB-JQn" firstAttribute="leading" secondItem="nny-DW-Bgb" secondAttribute="leading" id="xRW-Cq-o2x"/>
+                            <constraint firstItem="nny-DW-Bgb" firstAttribute="trailing" secondItem="Fxt-IJ-ddC" secondAttribute="trailing" id="xq9-t4-XwD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nny-DW-Bgb"/>
                     </view>
                     <connections>
+                        <outlet property="contentTextView" destination="117-zk-Si1" id="OH8-zB-qxd"/>
                         <outlet property="dateLabel" destination="6Oe-xt-JeD" id="El5-rU-QKP"/>
                         <outlet property="degreesLabel" destination="bkh-N7-pYq" id="W3g-jI-v73"/>
                         <outlet property="dvcDetailLabel" destination="u0D-tB-JQn" id="lDW-Ja-Iqp"/>
@@ -265,6 +287,7 @@
                         <outlet property="locationLabel" destination="du5-vw-lFu" id="U0f-Gq-LTI"/>
                         <outlet property="mapView" destination="LG3-5K-WRc" id="m92-IR-ajv"/>
                         <outlet property="pinIcon" destination="jgx-P8-cRk" id="8qo-h4-711"/>
+                        <outlet property="titleTextField" destination="Fxt-IJ-ddC" id="kzV-9y-RKo"/>
                         <outlet property="weatherIcon" destination="bbd-Mg-AKn" id="mnM-nk-PrW"/>
                     </connections>
                 </viewController>

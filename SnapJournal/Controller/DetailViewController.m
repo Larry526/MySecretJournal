@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *degreesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property (strong, nonatomic) DataHandler *dataHandler;
 
 @end
 
@@ -25,6 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dataHandler = [[DataHandler alloc]init];
     
     self.view.backgroundColor = [UIColor blackColor];
 
@@ -73,8 +77,22 @@
     
     if (sender.isSelected) {
         [sender setImage:[UIImage imageNamed:@"button_snap.png"] forState:UIControlStateNormal];
+        self.dvcTitleLabel.hidden = YES;
+        self.dvcDetailLabel.hidden = YES;
+        self.titleTextField.hidden = NO;
+        self.contentTextView.hidden = NO;
+        self.titleTextField.text = self.journal.title;
+        self.contentTextView.text = self.journal.detail;
+        NSString *title = self.titleTextField.text;
+        NSString *detail = self.contentTextView.text;
+        
+        
     } else {
             [sender setImage:[UIImage imageNamed:@"button_edit.png"] forState:UIControlStateNormal];
+        self.dvcTitleLabel.hidden = NO;
+        self.dvcDetailLabel.hidden = NO;
+        self.titleTextField.hidden = YES;
+        self.contentTextView.hidden = YES;
 
         }
 
