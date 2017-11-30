@@ -11,7 +11,7 @@
 #import "WeatherAPI.h"
 #import "WeatherHandler.h"
 
-@interface AddViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate>
+@interface AddViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
@@ -40,6 +40,8 @@
     [super viewDidLoad];
     [self enableLocationServices];
     
+    self.contentTextView.delegate = self;
+    
     self.currentDate = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     dateFormatter.dateFormat = @"MMMM dd, YYYY";
@@ -67,6 +69,10 @@
 
 - (IBAction)backButtonPressed:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    [textView setText:@""];
 }
 
 #pragma mark - Image Getter

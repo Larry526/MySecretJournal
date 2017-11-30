@@ -266,7 +266,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NVL-EE-nLc">
                                 <rect key="frame" x="82.666666666666657" y="411" width="331.33333333333337" height="74"/>
                             </mapView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Make a snap title" borderStyle="bezel" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="pUP-ef-PhF">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Make a snap title" borderStyle="bezel" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pUP-ef-PhF">
                                 <rect key="frame" x="0.0" y="185" width="414" height="40"/>
                                 <color key="backgroundColor" red="0.94518297910690308" green="0.94499510526657104" blue="0.94901341199874878" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
