@@ -56,7 +56,7 @@
     }
 }
 
-#pragma mark - TableView”
+#pragma mark - TableView
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.fetchedResultsController.sections.count;
