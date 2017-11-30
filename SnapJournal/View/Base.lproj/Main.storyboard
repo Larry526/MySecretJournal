@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6cl-zF-z1f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6cl-zF-z1f">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -130,12 +130,20 @@
                                             <segue destination="XXT-yO-cEW" kind="presentation" id="RXJ-b3-L2X"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Oe-xt-JeD">
+                                        <rect key="frame" x="176.33333333333334" y="20.333333333333329" width="62" height="31.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-Black" family="Source Sans Pro" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.82925707101821899" blue="0.0019002020126208663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="9hY-ST-KvK" secondAttribute="trailing" constant="12" id="LBn-1x-O3c"/>
+                                    <constraint firstItem="6Oe-xt-JeD" firstAttribute="centerX" secondItem="AKt-EJ-LuA" secondAttribute="centerX" id="NXe-56-B0N"/>
                                     <constraint firstItem="zdn-pH-ZFu" firstAttribute="leading" secondItem="AKt-EJ-LuA" secondAttribute="leading" constant="12" id="hE6-Dt-GXv"/>
                                     <constraint firstItem="zdn-pH-ZFu" firstAttribute="top" secondItem="AKt-EJ-LuA" secondAttribute="top" constant="12" id="ivw-hG-S4f"/>
+                                    <constraint firstItem="6Oe-xt-JeD" firstAttribute="centerY" secondItem="AKt-EJ-LuA" secondAttribute="centerY" id="mJm-Tv-9i7"/>
                                     <constraint firstItem="9hY-ST-KvK" firstAttribute="top" secondItem="AKt-EJ-LuA" secondAttribute="top" constant="12" id="mfH-Fj-ET4"/>
                                     <constraint firstAttribute="bottom" secondItem="9hY-ST-KvK" secondAttribute="bottom" constant="12" id="sQV-ym-e3y"/>
                                     <constraint firstAttribute="bottom" secondItem="zdn-pH-ZFu" secondAttribute="bottom" constant="12" id="vtB-T7-sxt"/>
@@ -265,6 +273,7 @@
                         <viewLayoutGuide key="safeArea" id="nny-DW-Bgb"/>
                     </view>
                     <connections>
+                        <outlet property="dateLabel" destination="6Oe-xt-JeD" id="El5-rU-QKP"/>
                         <outlet property="degreesLabel" destination="bkh-N7-pYq" id="W3g-jI-v73"/>
                         <outlet property="dvcDetailLabel" destination="u0D-tB-JQn" id="lDW-Ja-Iqp"/>
                         <outlet property="dvcImageView" destination="bpp-0o-vTY" id="w1i-QO-C1p"/>

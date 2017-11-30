@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *pinIcon;
 @property (weak, nonatomic) IBOutlet UILabel *degreesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
@@ -27,6 +28,10 @@
 
     Journal *journal = self.journal;
 
+    NSDate *currentDate = journal.timeStamp;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    dateFormatter.dateFormat = @"MMMM dd, YYYY";
+    self.dateLabel.text = [dateFormatter stringFromDate: currentDate];
     self.dvcTitleLabel.text = journal.title;
     self.dvcTitleLabel.layer.borderWidth = 0.75f;
     self.dvcTitleLabel.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -39,7 +44,7 @@
     NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:journal.image];
     NSData *imageData = [NSData dataWithContentsOfFile:fullPath];
     self.dvcImageView.image = [[UIImage alloc] initWithData:imageData];
-//    self.weatherIcon.image = [UIImage imageNamed:journal.condition];
+    self.weatherIcon.image = [UIImage imageNamed:journal.condition];
     
     CLLocationCoordinate2D location;
     location.latitude = journal.lattitude;
