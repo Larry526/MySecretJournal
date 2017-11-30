@@ -11,7 +11,12 @@
 #import <MapKit/MapKit.h>
 
 @interface DetailViewController () <NSFetchedResultsControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIImageView *weatherIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *pinIcon;
+@property (weak, nonatomic) IBOutlet UILabel *degreesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
 @end
 
@@ -23,10 +28,18 @@
     Journal *journal = self.journal;
 
     self.dvcTitleLabel.text = journal.title;
+    self.dvcTitleLabel.layer.borderWidth = 0.75f;
+    self.dvcTitleLabel.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.dvcDetailLabel.text = journal.detail;
+    self.dvcDetailLabel.layer.borderWidth = 0.75f;
+    self.dvcDetailLabel.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.degreesLabel.text = [NSString stringWithFormat:@"%g°C", round(journal.temp)];
+    self.locationLabel.text = [NSString stringWithFormat:@"%@, %@", journal.city, journal.country];
+    self.pinIcon.image = [UIImage imageNamed:@"icon_mappin"];
     NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:journal.image];
     NSData *imageData = [NSData dataWithContentsOfFile:fullPath];
     self.dvcImageView.image = [[UIImage alloc] initWithData:imageData];
+//    self.weatherIcon.image = [UIImage imageNamed:journal.condition];
     
     CLLocationCoordinate2D location;
     location.latitude = journal.lattitude;
@@ -40,7 +53,6 @@
     camera.altitude = 700;
     self.mapView.camera = camera;
     
-
 }
 
 - (IBAction)backButtonPressed:(UIButton *)sender {
