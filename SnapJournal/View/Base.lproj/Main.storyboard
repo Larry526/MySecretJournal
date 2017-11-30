@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="73.666666666666686" width="414" height="613.33333333333326"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="76" id="TJc-pq-u2a" customClass="CustomTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="76" id="TJc-pq-u2a" customClass="CustomTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TJc-pq-u2a" id="CMM-X0-qHh">
@@ -282,7 +282,7 @@
                                 <color key="textColor" red="0.53318655490875244" green="0.45482331514358521" blue="0.14497938752174377" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RZ7-ul-vUE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RZ7-ul-vUE">
                                 <rect key="frame" x="0.0" y="411" width="81.666666666666671" height="74"/>
                                 <color key="backgroundColor" red="0.94518297910000004" green="0.94499510529999997" blue="0.949013412" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
@@ -303,7 +303,7 @@
                                     <constraint firstItem="kYQ-3P-247" firstAttribute="centerY" secondItem="b07-g7-GS8" secondAttribute="centerY" id="rUe-Lz-970"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DxT-QW-cS1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DxT-QW-cS1">
                                 <rect key="frame" x="0.0" y="485.99999999999994" width="414" height="176.33333333333331"/>
                                 <color key="backgroundColor" red="0.94518297910000004" green="0.94499510529999997" blue="0.949013412" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
