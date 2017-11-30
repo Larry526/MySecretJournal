@@ -9,7 +9,6 @@
 #import "AddViewController.h"
 #import <Mapkit/Mapkit.h>
 #import "WeatherAPI.h"
-#import "WeatherHandler.h"
 
 @interface AddViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
 
@@ -17,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *weatherIcon;
-@property (strong, nonatomic) NSString *conditionImageName;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) NSDate *currentDate;
 
@@ -58,7 +56,7 @@
     double tempCoverted = [temp doubleValue] - 273.15;
     temp = [NSNumber numberWithDouble:tempCoverted];
     NSString *country = self.weatherDict[@"sys"][@"country"];
-    NSNumber *conditionID = self.weatherDict[@"weather"][0][@"id"];
+    NSString *conditionID = self.weatherDict[@"weather"][0][@"icon"];
     
     NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": self.currentDate, @"longitude": self.storedLong, @"lattitude": self.storedLat, @"city": city, @"temp":temp, @"country":country, @"condition":conditionID};
 
@@ -117,10 +115,8 @@
         self.weatherDict = results;
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            NSInteger conditionID = [self.weatherDict[@"weather"][0][@"id"] integerValue];
-            WeatherHandler *weatherhandler = [[WeatherHandler alloc]init];
-            self.conditionImageName = [weatherhandler getWeatherIcon:conditionID];
-            self.weatherIcon.image = [UIImage imageNamed:self.conditionImageName];
+            NSString *conditionID = self.weatherDict[@"weather"][0][@"icon"];
+            self.weatherIcon.image = [UIImage imageNamed:conditionID];
         }];
         
     }];

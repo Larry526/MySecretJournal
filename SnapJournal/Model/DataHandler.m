@@ -38,7 +38,7 @@
     journal.temp = [dict[@"temp"] doubleValue];
     journal.timeStamp = dict[@"date"];
     journal.country = dict[@"country"];
-    journal.condition = [dict[@"condition"] integerValue];
+    journal.condition = dict[@"condition"];
     [self.delegate saveContext];
 }
 
