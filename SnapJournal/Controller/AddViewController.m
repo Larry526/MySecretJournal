@@ -10,7 +10,7 @@
 #import <Mapkit/Mapkit.h>
 #import "WeatherAPI.h"
 
-@interface AddViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
+@interface AddViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
@@ -88,7 +88,7 @@
     NSArray *mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:picker.sourceType];
     NSLog(@"Picking media of types: %@", mediaTypes);
     picker.mediaTypes = mediaTypes;
-    picker.delegate = self;
+        picker.delegate = self;
     [self presentViewController:picker animated:YES completion:^{}];
     
 }
