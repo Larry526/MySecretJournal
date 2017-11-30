@@ -25,6 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor blackColor];
 
     Journal *journal = self.journal;
 
@@ -60,9 +62,25 @@
     
 }
 
+
+
 - (IBAction)backButtonPressed:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)editButtonPressed:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    
+    if (sender.isSelected) {
+        [sender setImage:[UIImage imageNamed:@"button_snap.png"] forState:UIControlStateNormal];
+    } else {
+            [sender setImage:[UIImage imageNamed:@"button_edit.png"] forState:UIControlStateNormal];
+
+        }
+
+    }
+
+    
 
 
 @end
