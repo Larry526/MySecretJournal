@@ -89,11 +89,11 @@
     Journal* journal = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.titleLabel.text = journal.title.uppercaseString;
-    cell.titleLabel.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:25];
+    cell.titleLabel.font = [UIFont fontWithName:@"SourceSansPro-Bold" size:25];
     cell.titleLabel.textColor = [UIColor blackColor];
     
     cell.detailLabel.text = journal.detail;
-    cell.detailLabel.font = [UIFont fontWithName:@"SourceSansPro-Regular" size:16];
+    cell.detailLabel.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:18];
     cell.detailLabel.textColor = [UIColor blackColor];
     
     NSDate *currentDate = journal.timeStamp;
@@ -104,11 +104,11 @@
     cell.dateLabel.textColor = [UIColor blackColor];
     
     cell.locationLabel.text = [NSString stringWithFormat:@"%@, %@", journal.city, journal.country];
-    cell.locationLabel.font = [UIFont fontWithName:@"SourceSansPro-Regular" size:16];
+    cell.locationLabel.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:18];
     cell.locationLabel.textColor = [UIColor blackColor];
     
     cell.tempLabel.text = [NSString stringWithFormat:@"%g°C", round(journal.temp)];
-    cell.tempLabel.font = [UIFont fontWithName:@"SourceSansPro-Regular" size:16];
+    cell.tempLabel.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:18];
     cell.tempLabel.textColor = [UIColor blackColor];
     cell.weatherIcon.image = [UIImage imageNamed:journal.condition];
     
