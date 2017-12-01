@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSDate *selectedDate;
 @property (nonatomic) Journal *journal;
+@property (nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @property (weak, nonatomic) IBOutlet UILabel *dvcTitleLabel;

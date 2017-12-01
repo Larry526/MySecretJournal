@@ -7,7 +7,6 @@
 //
 
 #import "DetailViewController.h"
-#import "DataHandler.h"
 #import <MapKit/MapKit.h>
 
 @interface DetailViewController () <NSFetchedResultsControllerDelegate>
@@ -20,7 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
-@property (strong, nonatomic) DataHandler *dataHandler;
+
+
 
 @end
 
@@ -28,8 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataHandler = [[DataHandler alloc]init];
-    
+
     self.view.backgroundColor = [UIColor blackColor];
 
     Journal *journal = self.journal;
@@ -81,12 +80,10 @@
         self.dvcDetailLabel.hidden = YES;
         self.titleTextField.hidden = NO;
         self.contentTextView.hidden = NO;
+        
         self.titleTextField.text = self.journal.title;
         self.contentTextView.text = self.journal.detail;
-        NSString *title = self.titleTextField.text;
-        NSString *detail = self.contentTextView.text;
-//        NSEntityDescription *entity = [NSEntityDescription entityForName:@"MyTable"
-//                                                  inManagedObjectContext:managedObjectContext];
+
         
         
     } else {
@@ -95,9 +92,12 @@
         self.dvcDetailLabel.hidden = NO;
         self.titleTextField.hidden = YES;
         self.contentTextView.hidden = YES;
-
+        
+        self.journal.title = self.titleTextField.text;
+        self.journal.detail = self.contentTextView.text;
+        [self.context save:NULL];
+        [self dismissViewControllerAnimated:YES completion:nil];
         }
-
     }
 
     
