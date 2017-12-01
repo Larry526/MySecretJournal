@@ -70,33 +70,47 @@
 {
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     Journal* journal = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.titleLabel.text = journal.title;
+    
+    cell.titleLabel.text = journal.title.uppercaseString;
+    cell.titleLabel.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:25];
+    cell.titleLabel.textColor = [UIColor blackColor];
+    
     cell.detailLabel.text = journal.detail;
+    cell.detailLabel.font = [UIFont fontWithName:@"SourceSansPro-Regular" size:16];
+    cell.detailLabel.textColor = [UIColor blackColor];
+    
+    NSDate *currentDate = journal.timeStamp;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    dateFormatter.dateFormat = @"MMMM dd, YYYY";
+    cell.dateLabel.text = [dateFormatter stringFromDate: currentDate];
+    cell.dateLabel.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:16];
+    cell.dateLabel.textColor = [UIColor blackColor];
+    
+    cell.locationLabel.text = [NSString stringWithFormat:@"%@, %@", journal.city, journal.country];
+    cell.locationLabel.font = [UIFont fontWithName:@"SourceSansPro-Regular" size:16];
+    cell.locationLabel.textColor = [UIColor blackColor];
     
     NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:journal.image];
     NSData *imageData = [NSData dataWithContentsOfFile:fullPath];
     cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageWithData:imageData] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
     cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageWithData:imageData] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+    cell.backgroundView.alpha = 0.6;
+    cell.selectedBackgroundView.alpha = 0.6;
     
-    UIVisualEffect *blurEffect;
-    blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    
-    UIVisualEffectView *visualEffectView;
-    visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    
-    visualEffectView.frame = CGRectMake(12, 12, cell.titleLabel.bounds.size.width, cell.titleLabel.bounds.size.height);
-    [visualEffectView.layer setCornerRadius:6.f];
-    visualEffectView.alpha = 0.75;
-    visualEffectView.clipsToBounds = NO;
-    [cell.backgroundView addSubview:visualEffectView];
-    
+//    UIVisualEffect *blurEffect;
+//    blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+//    UIVisualEffectView *visualEffectView;
+//    visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+//    visualEffectView.frame = CGRectMake(0, 0, self.view.bounds.size.width, cell.titleLabel.bounds.size.height * 2.75);
+//    [visualEffectView.layer setCornerRadius:10.f];
+//    [cell.backgroundView addSubview:visualEffectView];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150;
+    return self.view.frame.size.height/4;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

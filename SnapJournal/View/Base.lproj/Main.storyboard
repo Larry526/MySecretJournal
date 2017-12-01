@@ -40,24 +40,57 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="149.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fev-JT-ghN">
-                                                    <rect key="frame" x="27" y="11" width="318" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fev-JT-ghN">
+                                                    <rect key="frame" x="15" y="30" width="394" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3m-cP-ia0">
-                                                    <rect key="frame" x="27" y="44" width="318" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3m-cP-ia0">
+                                                    <rect key="frame" x="12" y="61" width="87.666666666666671" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORG-CV-ehQ">
+                                                    <rect key="frame" x="233.33333333333337" y="11" width="165.66666666666663" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_mappin" translatesAutoresizingMaskIntoConstraints="NO" id="BV0-q5-omx">
+                                                    <rect key="frame" x="15" y="114.66666666666669" width="20" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="LAG-wd-78o"/>
+                                                        <constraint firstAttribute="width" constant="20" id="jZO-Tj-wk0"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Por-Hp-RNR">
+                                                    <rect key="frame" x="35.000000000000007" y="123.66666666666669" width="65.666666666666686" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="BV0-q5-omx" secondAttribute="bottom" constant="5" id="0hK-SF-vsf"/>
+                                                <constraint firstAttribute="bottom" secondItem="Por-Hp-RNR" secondAttribute="bottom" constant="5" id="4PY-Lh-53m"/>
+                                                <constraint firstItem="ORG-CV-ehQ" firstAttribute="width" secondItem="CMM-X0-qHh" secondAttribute="width" multiplier="0.4" id="9Qd-8H-NP9"/>
+                                                <constraint firstAttribute="trailing" secondItem="Fev-JT-ghN" secondAttribute="trailing" constant="5" id="ADu-c2-GiZ"/>
+                                                <constraint firstItem="Fev-JT-ghN" firstAttribute="leading" secondItem="CMM-X0-qHh" secondAttribute="leading" constant="15" id="As5-er-XMU"/>
+                                                <constraint firstItem="P3m-cP-ia0" firstAttribute="top" secondItem="Fev-JT-ghN" secondAttribute="bottom" constant="10" id="MIm-6w-4wY"/>
+                                                <constraint firstItem="ORG-CV-ehQ" firstAttribute="top" secondItem="CMM-X0-qHh" secondAttribute="topMargin" id="YQI-uT-Gem"/>
+                                                <constraint firstItem="ORG-CV-ehQ" firstAttribute="trailing" secondItem="CMM-X0-qHh" secondAttribute="trailingMargin" id="kKt-jq-Ng6"/>
+                                                <constraint firstItem="Fev-JT-ghN" firstAttribute="top" secondItem="CMM-X0-qHh" secondAttribute="top" constant="30" id="pPf-MS-LOv"/>
+                                                <constraint firstItem="Por-Hp-RNR" firstAttribute="leading" secondItem="BV0-q5-omx" secondAttribute="trailing" id="sG0-XI-hWN"/>
+                                                <constraint firstItem="P3m-cP-ia0" firstAttribute="leading" secondItem="CMM-X0-qHh" secondAttribute="leadingMargin" constant="-3" id="sWt-Kc-yN8"/>
+                                                <constraint firstItem="BV0-q5-omx" firstAttribute="leading" secondItem="CMM-X0-qHh" secondAttribute="leading" constant="15" id="x8I-Ov-imh"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dateLabel" destination="ORG-CV-ehQ" id="zH0-GO-bP2"/>
                                             <outlet property="detailLabel" destination="P3m-cP-ia0" id="Zfx-Cd-DZ3"/>
+                                            <outlet property="locationLabel" destination="Por-Hp-RNR" id="5Hi-yi-WjO"/>
                                             <outlet property="titleLabel" destination="Fev-JT-ghN" id="3X3-EK-bwM"/>
                                             <segue destination="50T-7A-42Z" kind="presentation" identifier="Details" id="lMw-J3-0qD"/>
                                         </connections>
@@ -71,10 +104,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hau-06-o7e">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="73.666666666666671"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKW-Dk-xlN">
-                                        <rect key="frame" x="351" y="21" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKW-Dk-xlN">
+                                        <rect key="frame" x="335" y="13" width="79" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Add"/>
+                                        <state key="normal" image="button_add"/>
                                         <connections>
                                             <segue destination="XXT-yO-cEW" kind="presentation" identifier="AddJournal" id="9yF-SX-YnJ"/>
                                         </connections>
@@ -532,13 +565,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="button_add" width="46" height="46"/>
         <image name="button_back" width="33" height="47"/>
         <image name="button_edit" width="40" height="33"/>
         <image name="button_snap" width="38" height="46"/>
         <image name="icon_camera" width="45" height="38"/>
+        <image name="icon_mappin" width="30" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RXJ-b3-L2X"/>
-        <segue reference="mT0-fY-X5S"/>
+        <segue reference="9yF-SX-YnJ"/>
+        <segue reference="lMw-J3-0qD"/>
     </inferredMetricsTieBreakers>
 </document>
