@@ -82,7 +82,8 @@
 }
 
 - (void) calendarStarted {
-    self.container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height/2)];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.container = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/30, self.view.frame.size.width, self.view.frame.size.height/2)];
     self.container.clipsToBounds = YES;
     FSCalendar *calendar = [[FSCalendar alloc] init];
     calendar.translatesAutoresizingMaskIntoConstraints = NO;

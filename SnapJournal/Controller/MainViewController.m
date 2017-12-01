@@ -69,6 +69,16 @@
     return self.fetchedResultsController.sections.count;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    [header.textLabel setTextColor:[UIColor whiteColor]];
+    header.textLabel.font = [UIFont fontWithName:@"SourceSansPro-Light" size:18];
+    header.textLabel.textAlignment = NSTextAlignmentCenter;
+    header.textLabel.text = header.textLabel.text.uppercaseString;
+    header.contentView.backgroundColor = [UIColor colorWithRed:0.57 green:0.45 blue:0.17 alpha:1.0];
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.fetchedResultsController.sections[section].numberOfObjects;
 }
