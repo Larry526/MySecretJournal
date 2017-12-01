@@ -32,7 +32,7 @@
     self.fetchedResultsController = [self.dataHandler fetchedResultsController];
     self.fetchedResultsController.delegate = self;
 
-    self.tableView.pagingEnabled = YES;
+//    self.tableView.pagingEnabled = YES;
     
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
