@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView reloadData];
     self.view.backgroundColor = [UIColor whiteColor];
     self.dataHandler = [[DataHandler alloc]init];
     self.fetchedResultsController = [self.dataHandler fetchedResultsController];
@@ -42,6 +43,11 @@
     
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"AddJournal"]) {
         AddViewController *avc = segue.destinationViewController;
@@ -50,6 +56,7 @@
     else if ([segue.identifier isEqualToString:@"Details"]) {
         DetailViewController *dvc = segue.destinationViewController;
         dvc.dataHandler = self.dataHandler;
+        dvc.context = [self.fetchedResultsController managedObjectContext];
         NSIndexPath *path = [self.tableView indexPathForCell:sender];
         dvc.journal = [self.fetchedResultsController objectAtIndexPath:path];
         
