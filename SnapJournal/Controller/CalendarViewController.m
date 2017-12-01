@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSDate *selectedDate;
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) NSArray *datesWithEvent;
-
+@property (nonatomic) UIView *container;
 @end
 
 @implementation CalendarViewController
@@ -31,9 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.calendar.translatesAutoresizingMaskIntoConstraints = YES;
-    self.tableView.translatesAutoresizingMaskIntoConstraints = YES;
-    
     self.dataHandler = [[DataHandler alloc]init];
     self.fetchedResultsController = [self.dataHandler fetchedResultsController];
     self.fetchedResultsController.delegate = self;
@@ -49,10 +46,6 @@
     
 }
 
-//- (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date
-//{
-//
-//}
 
 -(void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date
 {
@@ -78,28 +71,31 @@
         abort();
     }
     [self.tableView reloadData];
-    
-//  NSDATEFORMATTER
-    NSDate *selectedDate = date;
-    NSDateFormatter *fmtr = [[NSDateFormatter alloc]init];
-    [fmtr setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
-//    [fmtr stringFromDate:selectedDate];
-    NSLog(@"Selected Date: %@", [fmtr stringFromDate:selectedDate]);
-    
-//    GESTURE STUFF
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(calendarTapped:)];
-    tapGesture.numberOfTapsRequired = 1;
-    [tapGesture setDelegate:self];
-    [self.calendar addGestureRecognizer:tapGesture];
+
+////    GESTURE STUFF
+//
+//    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(calendarTapped:)];
+//    tapGesture.numberOfTapsRequired = 1;
+//    [tapGesture setDelegate:self];
+//    [self.calendar addGestureRecognizer:tapGesture];
     
 }
 
 - (void) calendarStarted {
-    FSCalendar *calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    self.container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height/2)];
+    self.container.clipsToBounds = YES;
+    FSCalendar *calendar = [[FSCalendar alloc] init];
+    calendar.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.container addSubview:calendar];
+    [calendar.topAnchor constraintEqualToAnchor:self.container.topAnchor].active = YES;
+    [calendar.leadingAnchor constraintEqualToAnchor:self.container.leadingAnchor].active = YES;
+    [calendar.trailingAnchor constraintEqualToAnchor:self.container.trailingAnchor].active = YES;
+    [calendar.bottomAnchor constraintEqualToAnchor:self.container.bottomAnchor].active = YES;
+
     calendar.dataSource = self;
     calendar.delegate = self;
-    [self.view addSubview:calendar];
+    [self.view addSubview:self.container];
+    [self.tableView setContentInset:UIEdgeInsetsMake(10,0,0,0)];
     self.calendar = calendar;
     calendar.appearance.eventDefaultColor = [UIColor colorWithRed:1.00 green:0.82 blue:0.00 alpha:1.0];
     calendar.appearance.eventSelectionColor = [UIColor colorWithRed:1.00 green:0.82 blue:0.00 alpha:1.0];
@@ -112,19 +108,8 @@
     calendar.appearance.weekdayTextColor = [UIColor colorWithRed:0.61 green:0.50 blue:0.15 alpha:1.0];
     
     calendar.backgroundColor = [UIColor whiteColor];
-    [calendar setScrollDirection:FSCalendarScrollDirectionVertical];
+    [calendar setScrollDirection:FSCalendarScrollDirectionHorizontal];
 }
-
-- (void) calendarTapped: (CalendarTableViewCell*)sender {
-    
-    [UIView animateWithDuration:0.5f animations:^{
-        self.calendar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height/2);
-        self.calendar.bounds = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height/2);
-        self.tableView.alpha = 1;
-        NSLog(@"Tap gesture success");
-    }];
-}
-
 
 - (nullable NSString *)calendar:(FSCalendar *)calendar subtitleForDate:(NSDate *)date{
     return @"";
@@ -132,10 +117,12 @@
 
 #pragma mark - Segue
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"Details"]) {
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(CalendarTableViewCell*)sender {
+    if ([segue.identifier isEqualToString:@"Detail"]) {
+        NSLog(@"Segue success");
         DetailViewController *dvc = segue.destinationViewController;
-//        dvc.dataHandler = self.dataHandler;
+        NSIndexPath *path = [self.tableView indexPathForCell:sender];
+        dvc.journal = [self.fetchedResultsController objectAtIndexPath:path];
     }
 }
 
