@@ -116,9 +116,11 @@
     NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:journal.image];
     NSData *imageData = [NSData dataWithContentsOfFile:fullPath];
     cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageWithData:imageData] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+    cell.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
     cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageWithData:imageData] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
-    cell.backgroundView.alpha = 0.6;
-    cell.selectedBackgroundView.alpha = 0.6;
+    cell.selectedBackgroundView.contentMode = UIViewContentModeScaleAspectFill;
+    cell.backgroundView.alpha = 0.5;
+    cell.selectedBackgroundView.alpha = 0.5;
     
 //    UIVisualEffect *blurEffect;
 //    blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
