@@ -26,7 +26,7 @@
 @property (strong, nonatomic) NSNumber *storedLong;
 @property (strong, nonatomic) NSNumber *storedLat;
 
-@property (strong, nonatomic) UIImage *testImage;
+//@property (strong, nonatomic) UIImage *testImage;
 @property (strong, nonatomic) NSString *imageURL;
 @property (strong, nonatomic) NSDictionary *weatherDict;
 
@@ -66,7 +66,7 @@
 - (IBAction)saveButtonPressed:(UIButton *)sender {
     NSString *title = self.titleTextField.text;
     NSString *detail = self.contentTextView.text;
-    NSString *image = self.imageURL;
+//    NSString *image = self.imageURL;
     NSString *city = self.weatherDict[@"name"];
     NSNumber *temp = self.weatherDict[@"main"][@"temp"];
     double tempCoverted = [temp doubleValue] - 273.15;
@@ -74,7 +74,7 @@
     NSString *country = self.weatherDict[@"sys"][@"country"];
     NSString *conditionID = self.weatherDict[@"weather"][0][@"icon"];
     
-    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": image, @"date": self.currentDate, @"longitude": self.storedLong, @"lattitude": self.storedLat, @"city": city, @"temp":temp, @"country":country, @"condition":conditionID};
+    NSDictionary *results = @{@"title": title, @"detail": detail, @"image": self.imageView.image, @"date": self.currentDate, @"longitude": self.storedLong, @"lattitude": self.storedLat, @"city": city, @"temp":temp, @"country":country, @"condition":conditionID};
 
     
     [self.dataHandler saveJournal:results];
@@ -111,15 +111,13 @@
 
 - (void) imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(nonnull NSDictionary<NSString *,id> *)info{
     NSLog(@"Info: %@", info);
-    self.testImage = info[UIImagePickerControllerOriginalImage];
-    self.imageView.image = self.testImage;
+    self.imageView.image = info[UIImagePickerControllerOriginalImage];
     
-    self.imageURL = [[[NSUUID UUID] UUIDString] stringByAppendingPathExtension:@"png"];
+//    self.imageURL = [[[NSUUID UUID] UUIDString] stringByAppendingPathExtension:@"png"];
     
-    NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:self.imageURL];
+//    NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:self.imageURL];
     
-    NSData *imageData = UIImagePNGRepresentation(self.testImage);
-    [imageData writeToFile:fullPath atomically:YES];
+//    [imageData writeToFile:fullPath atomically:YES];
     
     [self dismissViewControllerAnimated:YES completion:^{}];
 }

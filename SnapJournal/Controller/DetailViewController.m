@@ -46,9 +46,9 @@
     self.degreesLabel.text = [NSString stringWithFormat:@"%g°C", round(journal.temp)];
     self.locationLabel.text = [NSString stringWithFormat:@"%@, %@", journal.city, journal.country];
     self.pinIcon.image = [UIImage imageNamed:@"icon_mappin"];
-    NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:journal.image];
-    NSData *imageData = [NSData dataWithContentsOfFile:fullPath];
-    self.dvcImageView.image = [[UIImage alloc] initWithData:imageData];
+//    NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:journal.image];
+//    NSData *imageData = [NSData dataWithContentsOfFile:fullPath];
+    self.dvcImageView.image = [[UIImage alloc] initWithData:journal.image];
     self.weatherIcon.image = [UIImage imageNamed:journal.condition];
     
     CLLocationCoordinate2D location;

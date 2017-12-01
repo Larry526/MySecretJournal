@@ -19,13 +19,14 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) DataHandler *dataHandler;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-
+@property (nonatomic) NSDateFormatter *dateFormatter;
 @end
 
 @implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self createFormatter];
     [self.tableView reloadData];
     self.view.backgroundColor = [UIColor whiteColor];
     self.dataHandler = [[DataHandler alloc]init];
@@ -83,6 +84,11 @@
     return self.fetchedResultsController.sections[section].numberOfObjects;
 }
 
+- (void)createFormatter {
+    self.dateFormatter = [[NSDateFormatter alloc]init];
+    self.dateFormatter.dateFormat = @"MMMM dd, YYYY";
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
@@ -97,9 +103,8 @@
     cell.detailLabel.textColor = [UIColor blackColor];
     
     NSDate *currentDate = journal.timeStamp;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    dateFormatter.dateFormat = @"MMMM dd, YYYY";
-    cell.dateLabel.text = [dateFormatter stringFromDate: currentDate];
+    
+    cell.dateLabel.text = [self.dateFormatter stringFromDate: currentDate];
     cell.dateLabel.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:16];
     cell.dateLabel.textColor = [UIColor blackColor];
     
@@ -113,11 +118,13 @@
     cell.weatherIcon.image = [UIImage imageNamed:journal.condition];
     
     
-    NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:journal.image];
-    NSData *imageData = [NSData dataWithContentsOfFile:fullPath];
-    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageWithData:imageData] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+//    NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:journal.image];
+    
+//    NSData *imageData = [NSData dataWithContentsOfFile:fullPath];
+    
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageWithData:journal.image] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
     cell.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
-    cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageWithData:imageData] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+    cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageWithData:journal.image] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
     cell.selectedBackgroundView.contentMode = UIViewContentModeScaleAspectFill;
     cell.backgroundView.alpha = 0.5;
     cell.selectedBackgroundView.alpha = 0.5;
