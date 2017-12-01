@@ -90,6 +90,12 @@
     cell.locationLabel.font = [UIFont fontWithName:@"SourceSansPro-Regular" size:16];
     cell.locationLabel.textColor = [UIColor blackColor];
     
+    cell.tempLabel.text = [NSString stringWithFormat:@"%g°C", round(journal.temp)];
+    cell.tempLabel.font = [UIFont fontWithName:@"SourceSansPro-Regular" size:16];
+    cell.tempLabel.textColor = [UIColor blackColor];
+    cell.weatherIcon.image = [UIImage imageNamed:journal.condition];
+    
+    
     NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:journal.image];
     NSData *imageData = [NSData dataWithContentsOfFile:fullPath];
     cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageWithData:imageData] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
