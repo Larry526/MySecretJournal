@@ -10,7 +10,7 @@
 #import <Mapkit/Mapkit.h>
 #import "WeatherAPI.h"
 
-@interface AddViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UINavigationControllerDelegate>
+@interface AddViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
@@ -45,6 +45,22 @@
     dateFormatter.dateFormat = @"MMMM dd, YYYY";
     self.dateLabel.text = [dateFormatter stringFromDate: self.currentDate];
 
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
+}
+
+-(void)dismissKeyboard {
+    [self.titleTextField resignFirstResponder];
+    [self.contentTextView resignFirstResponder];
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (IBAction)saveButtonPressed:(UIButton *)sender {
