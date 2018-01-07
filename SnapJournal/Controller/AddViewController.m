@@ -73,6 +73,10 @@
     temp = [NSNumber numberWithDouble:tempCoverted];
     NSString *country = self.weatherDict[@"sys"][@"country"];
     NSString *conditionID = self.weatherDict[@"weather"][0][@"icon"];
+    if (self.imageView.image == nil) {
+        [self saveButtonCheck];
+        return;
+    }
     
     NSDictionary *results = @{@"title": title, @"detail": detail, @"image": self.imageView.image, @"date": self.currentDate, @"longitude": self.storedLong, @"lattitude": self.storedLat, @"city": city, @"temp":temp, @"country":country, @"condition":conditionID};
 
@@ -87,6 +91,23 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     [textView setText:@""];
+}
+
+- (void)saveButtonCheck {
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@"Missing Image"
+                                 message:@"Please add an image to your journal"
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Ok"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                }];
+    
+    [alert addAction:yesButton];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Image Getter
