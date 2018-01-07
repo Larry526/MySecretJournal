@@ -33,7 +33,6 @@
     self.fetchedResultsController = [self.dataHandler fetchedResultsController];
     self.fetchedResultsController.delegate = self;
 
-//    self.tableView.pagingEnabled = YES;
     
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
@@ -98,34 +97,29 @@
     // Do font/colour/background init in the custom table view cell
     
     cell.titleLabel.text = journal.title.uppercaseString;
-    cell.titleLabel.font = [UIFont fontWithName:@"SourceSansPro-Bold" size:25];
-    cell.titleLabel.textColor = [UIColor blackColor];
-    
+
     cell.detailLabel.text = journal.detail;
-    cell.detailLabel.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:18];
-    cell.detailLabel.textColor = [UIColor blackColor];
+
     
     NSDate *currentDate = journal.timeStamp;
     
     cell.dateLabel.text = [self.dateFormatter stringFromDate: currentDate];
-    cell.dateLabel.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:16];
-    cell.dateLabel.textColor = [UIColor blackColor];
+
     
     cell.locationLabel.text = [NSString stringWithFormat:@"%@, %@", journal.city, journal.country];
-    cell.locationLabel.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:18];
-    cell.locationLabel.textColor = [UIColor blackColor];
+
     
     cell.tempLabel.text = [NSString stringWithFormat:@"%g°C", round(journal.temp)];
-    cell.tempLabel.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:18];
-    cell.tempLabel.textColor = [UIColor blackColor];
+
     cell.weatherIcon.image = [UIImage imageNamed:journal.condition];
   
+    
     cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageWithData:journal.image] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
     cell.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
     cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageWithData:journal.image] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
     cell.selectedBackgroundView.contentMode = UIViewContentModeScaleAspectFill;
-    cell.backgroundView.alpha = 0.5;
-    cell.selectedBackgroundView.alpha = 0.5;
+    cell.backgroundView.alpha = 0.7;
+    cell.selectedBackgroundView.alpha = 0.7;
     
     return cell;
 }
