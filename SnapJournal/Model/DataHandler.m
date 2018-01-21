@@ -31,7 +31,6 @@
     Journal *journal = [[Journal alloc]initWithContext:self.context];
     journal.title = dict[@"title"];
     journal.detail = dict[@"detail"];
-    
     journal.image = UIImagePNGRepresentation((UIImage*)dict[@"image"]);
     journal.longitude =  [dict[@"longitude"] doubleValue];
     journal.lattitude =  [dict[@"lattitude"] doubleValue];

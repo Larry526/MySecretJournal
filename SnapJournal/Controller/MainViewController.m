@@ -88,35 +88,22 @@
     self.dateFormatter.dateFormat = @"MMMM dd, YYYY";
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     Journal* journal = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    
-    // Do font/colour/background init in the custom table view cell
-    
     cell.titleLabel.text = journal.title.uppercaseString;
-
     cell.detailLabel.text = journal.detail;
-
-    
     NSDate *currentDate = journal.timeStamp;
-    
     cell.dateLabel.text = [self.dateFormatter stringFromDate: currentDate];
-
-    
     cell.locationLabel.text = [NSString stringWithFormat:@"%@, %@", journal.city, journal.country];
-
-    
     cell.tempLabel.text = [NSString stringWithFormat:@"%g°C", round(journal.temp)];
-
     cell.weatherIcon.image = [UIImage imageNamed:journal.condition];
-  
-    
+
     cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageWithData:journal.image] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
-    cell.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
     cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageWithData:journal.image] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+    cell.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
     cell.selectedBackgroundView.contentMode = UIViewContentModeScaleAspectFill;
     cell.backgroundView.alpha = 0.7;
     cell.selectedBackgroundView.alpha = 0.7;
